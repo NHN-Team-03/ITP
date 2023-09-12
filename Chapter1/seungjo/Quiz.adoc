@@ -1,0 +1,122 @@
+Question 1:
+
+One of the components of a computer is its *CPU.* What is a CPU and what role does it play in a computer?
+
+```
+
+```
+
+
+
+
+
+Question 2:
+
+Explain what is meant by an "asynchronous event." Give some examples.
+
+```
+```
+
+
+
+
+
+Question 3:
+
+What is the difference between a "compiler" and an "interpreter"?
+
+```
+
+```
+
+
+
+
+
+Question 4:
+
+Explain the difference between *high-level languages* and *machine language.*
+
+```
+high-level languages는 사람이 알아볼 수 있는 언어
+machine language는 기게(컴퓨터)가 해석할 수 있는 언어
+```
+
+
+
+
+
+Question 5:
+
+If you have the source code for a Java program, and you want to run that program, you will need both a *compiler* and an *interpreter.* What does the Java compiler do, and what does the Java interpreter do?
+
+```
+compiler: 소스 코드 전체를 읽어드리고 컴파일하여 클래스 파일을 생성
+interpreter: 소스 코드에서 한 줄씩 읽어낸 후 바로 실행
+```
+
+
+
+
+
+
+
+Question 6:
+
+What is a *subroutine?*
+
+```
+루틴 안에서 호출되는 함수
+```
+
+
+
+
+
+Question 7:
+
+Java is an object-oriented programming language. What is an *object*?
+
+```
+객체란 
+```
+
+
+
+
+
+Question 8:
+
+What is a *variable?* (There are four different ideas associated with variables in Java. Try to mention all four aspects in your answer. Hint: One of the aspects is the variable's name.)
+
+```
+이름, 값, 메모리, 
+```
+
+
+
+
+
+Question 9:
+
+Java is a "platform-independent language." What does this mean?
+
+```
+자바는 소스코드를 컴파일을 하면 Java Byte Code로 나온다는 특징이 있다.
+이러한 이유는 JVM으로 Byte Code를 읽어 기게어로 번역하기 때문인데
+운영체제에 상관없이 어느 환경에서 컴파일을 하여도 같은 Byte Code를 생성하기 때문에
+platform-independent 하다고 할 수 있다.
+```
+
+
+
+
+
+Question 10:
+
+What is the "Internet"? Give some examples of how it is used. (What kind of services does it provide?)
+
+```
+
+```
+
