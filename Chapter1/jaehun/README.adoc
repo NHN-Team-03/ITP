@@ -40,7 +40,8 @@
 * 기계어 명령어는 binary number로 표현됨 → 0, 1
 
 명령어나 data의 일부는 byte로 구성되고 연속된 memory location에 저장됨.
-NOTE: 이미지 들어올 자리
+
+image:image/schematicview.png[]
 
 == Asynchronous Events: Polling Loops and Interrupts
 
@@ -95,7 +96,7 @@ high level language로 작성된 프로그램을 컴퓨터가 실행이 가능�
 * complie을 진행 했을 때 나오는 java bytecode는 JVM이 프로그램을 실행할 수 있도록 해석된 language
 * JVM은 java bytecode를 해당 type의 컴퓨터에 맞는 machine language로 번역
 
-NOTE: 이미지 들어올 자리
+image:image/javacompiler.png[]
 
 === JIT - Just In Time Complier
 
