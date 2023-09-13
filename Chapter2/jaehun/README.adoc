@@ -121,7 +121,7 @@ rate = 0.07;
 
 === Literal
 
-* 상수 값
+* 상수 value를 variable에 넣는 방법
 
 * 특수 literal
 ** char -> 두문자이지만 단일 문자로 인식
