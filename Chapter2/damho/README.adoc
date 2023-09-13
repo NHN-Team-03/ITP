@@ -27,3 +27,136 @@
 convention : 규칙, 관습
 oblivious : 감지하지 못하는, 의식이 없는??
 paramount : 가장 중요한
+
+== QUIZ
+
+**Question 1:**
+
+Briefly explain what is meant by the syntax and the semantics of a programming language. Give an example to illustrate the difference between a syntax error and a semantics error.
+
+**Answer 1:**
+
+Syntax : 코드를 작성할 때 컴파일 되기 위해 지켜야 할 엄격한 문법. -> Syntax error가 있으면 컴파일 x.
+
+Semantics : 코드를 작성할 때 타당한 의미를 가지는지를 판별. 좋은 프로그램을 만들기 위해 지켜야 함. -> Semantics error가 있어도 컴파일 가능하고 실행 가능. 하지만 좋은 프로그램이 될 수는 없음.
+
+**Question 2:**
+
+What does the computer do when it executes a variable declaration statement. Give an example.
+
+**Answer 2:**
+
+int x; 를 예시로 들면, 메모리 주소에 int형 크기만큼 공간을 잡고 x라는 이름을 붙여준다.
+
+**Question 3:**
+
+What is a type, as this term relates to programming?
+
+**Answer 3:**
+
+Type이란 데이터의 유형을 말한다. Type은 값의 방식, 저장 방식 등을 명시적으로 알려준다.
+
+**Question 4:**
+
+One of the primitive types in Java is boolean. What is the boolean type? Where are boolean values used? What are its possible values?
+
+**Answer 4:**
+
+boolean type이란 
+boolean 값은 branch에서 프로그램의 상태를 판별하는 데 사용된다.
+boolean은 true, false 두 가지 리터럴을 가진다.
+
+**Question 5:**
+
+Give the meaning of each of the following Java operators:
+
+a)    ++
+
+b)    &&
+
+c)    !=
+
+**Answer 5:**
+
+a) 증가 연산자. 변수 앞 혹은 뒤에 붙어서 변수의 값을 1 증가시킨다
+b) and를 나타내는 비교연산자. && 앞 뒤로 오는 expression이 둘 다 true 면 true를 반환한다.
+c) 앞에 온 expression과 뒤에 온 expression이 다르면 true를 반환함.
+
+**Question 6:**
+
+Explain what is meant by an assignment statement, and give an example. What are assignment statements used for?
+
+**Answer 6:**
+
+ex) x = 4;
+
+x라고 이름 붙여진 메모리 주소에 4라는 값을 저장.
+
+**Question 7:**
+
+What is meant by precedence of operators?
+
+**Answer 7:**
+
+()로 묶이지 않고 연산자들끼리 연산을 할 때 어떤 연산이 먼저 실행될 지 순서를 정해놓은 것.
+
+**Question 8:**
+
+What is a literal?
+
+**Answer 8:**
+
+상수. 값을 저장하는 방법.
+
+**Question 9:**
+
+In Java, classes have two fundamentally different purposes. What are they?
+
+**Answer 9:**
+
+1. static variables 와 subroutine들을 grouping하는 object
+2. data의 type을 표현하는 수단
+
+**Question 10:**
+
+What is the difference between the statement "x = TextIO.getDouble();" and the statement "x = TextIO.getlnDouble();"
+
+**Answer 10:**
+
+getInDouble()은 공백 이전의 값을 읽어서 저장한 후 나머지 문자들을 버퍼에 남겨둔다.
+
+**Question 11:**
+
+What is the difference between the statement "x = TextIO.getDouble();" and the statement "x = TextIO.getlnDouble();"
+
+**Answer 11:**
+
++ 연산자는 괄호가 없다면 왼쪽에서 오른쪽 순서로 실행하고, 실행 결과는 입력된 변수들의 type으로 결정된다.
+2 + 3 = 5이므로 5 + "test"가 되어 "5test"가 된다.
+"test" + 2 = "test2"가 되고 "test2" + 3은 "test23"이 된다.
+
+**Question 12:**
+
+Integrated Development Environments such as Eclipse often use syntax coloring, which assigns various colors to the characters in a program to reflect the syntax of the language. A student notices that Eclipse colors the word String differently from int, double, and boolean. The student asks why String should be a different color, since all these words are names of types. What's the answer to the student's question?
+
+**Answer 12:**
+
+int, char, boolean등은 primitive type이고, String은 reference type이기 때문에 색이 다르다.
+
+**Question 13:**
+
+What is the purpose of an import directive, such as import textio.TextIO or import java.util.Scanner?
+
+**Answer 13:**
+
+해당 경로에 있는 패키지에 정의되어있는 이름(객체, 변수, subroutine) 사용하겠다.
+
+**Question 14:**
+
+Write a complete program that asks the user to enter the number of "widgets" they want to buy and the cost per widget. The program should then output the total cost for all the widgets. Use System.out.printf to print the cost, with two digits after the decimal point. You do not need to include any comments in the program.
+
+**Answer 14:**
+
+== ISSUE
+
+Literal에 대해 잘 이해 못 했으나, Literal이란 값을 저장하는 방법 정도로 이해했음.
