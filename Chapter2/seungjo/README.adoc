@@ -2,8 +2,8 @@
 
 == Section 2.1 The Basic Java Application
 
-[quote, J.W. LEE]
-Subroutine vs Function vs Method 이게 뭔데 씹덕아
+[quote]
+Subroutine vs Function vs Method ?
 
 === Syntax (구문)
 * 무엇이 허용되는지 결정하는 규칙
