@@ -1,6 +1,6 @@
-= Chapter 2
+= Chapter 5
 
-== Programming in the Small I: Names and Things
+== Programming in the Large II: Objects and Classes
 
 
 [width=25%]

@@ -1,6 +1,7 @@
-= Chapter 2
+= Chapter 4
 
-== Programming in the Small I: Names and Things
+== Programming in the Large I: Subroutines
+
 
 
 [width=25%]

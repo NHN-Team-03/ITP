@@ -1,6 +1,6 @@
-= Chapter 2
+= Chapter 3
 
-== Programming in the Small I: Names and Things
+== Programming in the Small II: Control
 
 
 [width=25%]
