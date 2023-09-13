@@ -2,7 +2,8 @@
 
 == Section 2.1 The Basic Java Application
 
-> Subroutine vs Function vs Method
+[quote, J.W. LEE]
+Subroutine vs Function vs Method 이게 뭔데 씹덕아
 
 === Syntax (구문)
 * 무엇이 허용되는지 결정하는 규칙
@@ -33,6 +34,7 @@ variable = expression;
 
 
 === Data Type
+**_변수가 가질 수 있는 값_**
 
 ==== Primitive type
 ```
