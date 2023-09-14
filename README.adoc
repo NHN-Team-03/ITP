@@ -17,9 +17,10 @@
 3. 하루에 정해진 학습 목표까지 개별로 읽고 자신의 이름 폴더에 정리합니다.
 * 3-1. 글로 작성해야 할 경우 `README.adoc` 파일에 정리합니다.
 * 3-2. 소스 코드를 올려야 할 경우 자신의 폴더 하위에 `src` 폴더를 생성합니다.
-* 3-3. 연습문제인 경우 src폴더 하위에 `Exercise` 폴더를 생성합니다.
-* 3-4. 연습문제 번호에 맞게 `Exercise-number.java` 파일 이름을 정합니다.
-* 3-5. `*Chapter1/seungjo/src/Exercise/Exercise1.java*` 와 같은 경로가 되도록 합니다.
+* 3-3. 연습문제인 경우 src 폴더 하위에 `Exercise` 폴더를 생성합니다.
+* 3-4. 예제인 경우 src 폴더 하위에 `Example` 폴더를 생성하고 이 폴더에 정리합니다. (파일명: 자유)
+* 3-5. 연습문제 번호에 맞게 `Exercise-number.java` 파일 이름을 정합니다.
+* 3-6. `*Chapter1/seungjo/src/Exercise/Exercise1.java*` 와 같은 경로가 되도록 합니다.
 4. 정리가 완료된 경우 자신의 branch에 아래의 규칙에 맞게 `commit & push` 을 합니다.
 5. 개인 발표 및 코드 리뷰 시간 전에 아래의 규칙에 맞게 Main Branch에 `Pull Request` 를 합니다.
 
