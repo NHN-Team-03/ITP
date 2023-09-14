@@ -2,7 +2,8 @@ package Chapter3.jaehun.exercise;
 
 public class Exercise1 {
     public static void main(String[] args) {
-        int diceNumber1, diceNumber2;
+        int diceNumber1;
+        int diceNumber2;
         int count;
 
         count = 0;
