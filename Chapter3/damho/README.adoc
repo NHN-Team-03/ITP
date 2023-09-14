@@ -1,0 +1,275 @@
+= Chapter 3
+
+**counting loop** : loop의 한 단계가 끝나면 count를 하는 변수의 값을 1 증가시키고 count를 하는 변수의 값으로 loop의 종료를 결정하는 loop??
+
+**golden rule of debugging** : If you are absolutely sure that everything in your program is right, and if it still doesn't work, then one of the things that you are absolutely sure of is wrong.
+
+**sentinel value** : 감시값. 데이터의 끝을 표시하기 위한 값.
+
+**priming1 the loop** : while loop에 있는 테스트가 처음 실행될 때 의미가 있도록 설정하는 일.
+
+**label** : while 앞에 레이블을 붙일 수 있다 ex) bigloop : while (boolean-expreasion)
+이 경우 break bigloop;로 break문 사용.
+
+**loop control variable** : 루프를 제어하는 변수
+
+**switch statement** : switch (expression) -> expression에 double, float와 같은 type은 사용 불가. switch statement의 expression에 enum type도 사용 가능. case Season.WINTER가 아닌 WINTER로 사용.
+
+**Array** : 배열은 정수나 문자열 또는 다른 값의 목록(list)이 아님. int형의 변수 목록, String형의 변수 목록 또는 다른 유형의 변수 목록으로 생각하는 것이 좋음.
+
+== QUIZ
+
+**Question 1:**
+
+What is an algorithm?
+
+**Answer 1:**
+
+문제를 푸는 방법.
+technically 알고리즘은 한정된 수의 단계 후에 항상 종료되는, 모호하지 않은 단계별 절차이다.
+
+**Question 2:**
+
+Explain briefly what is meant by "pseudocode" and how is it useful in the development of algorithms.
+
+**Answer 2:**
+
+알고리즘이 수행해야 할 내용을 우리가 사용하는 언어로 간략히 서술해 놓은 것.
+생각을 명확히 정립하게 해서 프로그램 설계에 도움이 된다.
+
+
+**Question 3:**
+
+What is a block statement? How are block statements used in Java programs?
+
+**Answer 3:**
+
+statement 들을 하나의 큰 statement로 묶는다.
+{}로 묶는다.
+
+
+**Question 4:**
+
+What is the main difference between a while loop and a do..while loop?
+
+**Answer 4:**
+
+while loop는 맨 처음 loop에 도달했을 때 loop body를 실행하기 전에 loop조건을 체크해서 while body가 한 번도 실행되지 않을 수 있지만, do..while loop는 일단 한번 실행하고 loop조건을 체크하기 때문에 무조건 한 번은 실행된다.
+
+**Question 5:**
+
+What does it mean to prime a loop?
+
+**Answer 5:**
+
+while loop의 test가 처음 실행되기 전에 test가 의도한 대로 잘 작동하도록 설정하는 일.
+
+**Question 6:**
+
+Explain what is meant by an animation and how a computer displays an animation.
+
+**Answer 6:**
+
+동작이나 모양이 조금씩 다른 많은 그림이나 인형을 한 장면씩 촬영하여 영사하였을 때에 물체가 연속하여 움직이는 것처럼 보이게 하는 것.
+컴퓨터는 애니메이션을 개별 그림들을 차례대로 빠르게 표시한다.
+
+**Question 7:**
+
+Write a for loop that will print out all the multiples of 3 from 3 to 36, that is: 3 6 9 12 15 18 21 24 27 30 33 36.
+
+**Answer 7:**
+
+[source, java]
+----
+for (int i = 1; i < 13; i++) {
+   System.out.print(i * 3 + " ");
+}
+----
+
+**Question 8:**
+
+Fill in the following main() routine so that it will ask the user to enter an integer, read the user's response, and tell the user whether the number entered is even or odd. (You can use TextIO.getInt() to read the integer. Recall that an integer n is even if n % 2 == 0.)
+
+public static void main(String[] args) {
+ 
+         // Fill in the body of this subroutine!
+ 
+}
+
+**Answer 8:**
+
+[source, java]
+----
+public static void main(String[] args) {
+   int inputInt;
+
+   System.out.print("번호를 입력하세요 : ");
+   inputInt = TextIO.getInt();
+   if(inputInt%2==0) {
+      System.out.print("\n" + inputInt + "는 짝수입니다.");
+   }
+}
+----
+
+**Question 9:**
+
+Write a code segment that will print out two different random integers selected from the range 1 to 10. All possible outputs should have the same probability. Hint: You can easily select two random numbers, but you have to account for the fact that the two numbers that you pick might be the same.
+
+**Answer 9:**
+
+[source, java]
+----
+public void randomNumber() {
+   int num1;
+   int num2;
+   Random random = new Random();
+
+   num1 = random.nextInt(10) + 1;
+   do {
+      num2 = random.nextInt(10) + 1;
+   } while(num1 == num2);
+
+   System.out.print("num1 : " + num1 + " num2 : " + num2);
+}
+----
+
+**Question 10:**
+
+Suppose that s1 and s2 are variables of type String, whose values are expected to be string representations of values of type int. Write a code segment that will compute and print the integer sum of those values, or will print an error message if the values cannot successfully be converted into integers. (Use a try..catch statement.)
+
+**Answer 10:** 
+
+[source, java]
+----
+try { +
+   int x = String.valueOf(s1); +
+   int y = String.valueOf(s2);
+
+   System.out.print(x + y);
+} catch (NumberFormatException e) {
+   System.out.print("NumberFormatException 발생");
+}
+----
+
+**Question 11:**
+
+Show the exact output that would be produced by the following main() routine:
+[source, java]
+----
+public static void main(String[] args) {
+    int N;
+    N = 1;
+    while (N <= 32) {
+       N = 2 * N;
+       System.out.println(N);   
+    }
+}
+----
+
+**Answer 11:**
+
+2 +
+4 +
+8 +
+16 +
+32
+
+
+**Question 12:**
+
+Show the exact output produced by the following main() routine:
+[source, java]
+----
+public static void main(String[] args) {
+   int x,y;
+   x = 5;
+   y = 1;
+   while (x > 0) {
+      x = x - 1;
+      y = y * x;
+      System.out.println(y);
+   }
+}
+----
+
+**Answer 12:**
+
+4 +
+12 +
+24 +
+24 +
+0
+
+**Question 13:**
+
+What output is produced by the following program segment? Why? (Recall that name.charAt(i) is the i-th character in the string, name.)
+
+[source, java]
+----
+String name;
+int i;
+boolean startWord;
+
+name = "Richard M. Nixon";
+startWord = true;
+for (i = 0; i < name.length(); i++) {
+   if (startWord)
+      System.out.println(name.charAt(i));
+   if (name.charAt(i) == ' ')
+      startWord = true;
+   else
+      startWord = false;
+}
+----
+
+**Answer 13:**
+
+Richard
+
+**Question 14:**
+
+Suppose that numbers is an array of type int[]. Write a code segment that will count and output the number of times that the number 42 occurs in the array.
+
+**Answer 14:**
+
+[source, java]
+----
+int count;
+count = 0;
+
+for (int i = 0; i<numbers.length; i++) {
+   if(numbers[i] == 42) {
+      count++;
+   }
+}
+System.out.print(count);
+----
+
+**Question 15:**
+
+Define the range of an array of numbers to be the maximum value in the array minus the minimum value. Suppose that raceTimes is an array of type double[]. Write a code segment that will find and print the range of raceTimes.
+
+**Answer 15:**
+
+[source, java]
+----
+int min;
+int max;
+double range;
+
+min = raceTimes[0];
+max = raceTimes[0];
+
+for (int i = 0; i<raceTimes.length; i++) {
+   if(min > raceTimes[i]) {
+      min = raceTimes[i];
+   }
+   if(max < raceTimes[i]) {
+      max = raceTimes[i];
+   }
+}
+
+range = max - min;
+
+System.out.print(range);
+----
