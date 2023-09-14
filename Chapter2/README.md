@@ -1,6 +1,6 @@
-= Chapter 1
+= Chapter 2
 
-== Overview: The Mental Landscape +
+== Programming in the Small I: Names and Things
 
 
 [width=25%]
@@ -16,5 +16,4 @@
 | link:./damho[이담호]
 
 | link:./jaehun[장재훈]
-=======
 |===
