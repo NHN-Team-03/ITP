@@ -1,43 +1,80 @@
-To study Introduction to Programming Using Java Version 9.0, JavaFX Edition +
+= Team 3 - Java Study
 
-=== Git
+== 🔆 Git
+[%hardbreaks]
 * Organization: https://github.com/NHN-Team-03
 * Repository: https://github.com/NHN-Team-03/ITP
 
-=== 진도
-매일 협의
 
-=== 학습 방법
+== 📚 교재
+* https://math.hws.edu/javanotes/[Introduction to Programming Using Java Version 9.0, JavaFX Edition]
 
-* 목표까지 자기 학습 및 문제 해결
-* 개인발표: 15시(랜덤)
-* 코드리뷰: 매일 15시 20분 ~ 17시
-* JavaFx -> Servlet?? +
 
-[cols=3*, options=header]
+== ✍🏻 학습 방법
+1. 각 챕터에 자신의 이름의 폴더를 생성합니다. 
+** 폴더명은 *영어 소문자* 로 합니다. (ex. `Chapter1/seungjo`)
+2. 생성한 폴더에 `_README.adoc_` 파일을 생성합니다.
+3. 하루에 정해진 학습 목표까지 개별로 읽고 자신의 이름 폴더에 정리합니다.
+* 3-1. 글로 작성해야 할 경우 `README.adoc` 파일에 정리합니다.
+* 3-2. 소스 코드를 올려야 할 경우 자신의 폴더 하위에 `src` 폴더를 생성합니다.
+* 3-3. 연습문제인 경우 src폴더 하위에 `Exercise` 폴더를 생성합니다.
+* 3-4. 연습문제 번호에 맞게 `Exercise-number.java` 파일 이름을 정합니다.
+* 3-5. `*Chapter1/seungjo/src/Exercise/Exercise1.java*` 와 같은 경로가 되도록 합니다.
+4. 정리가 완료된 경우 자신의 branch에 아래의 규칙에 맞게 `commit & push` 을 합니다.
+5. 개인 발표 및 코드 리뷰 시간 전에 아래의 규칙에 맞게 Main Branch에 `Pull Request` 를 합니다.
+
+
+== 💡 학습 방식
+* 개인 발표: 모든 팀원이 준비해온 후 15시에 랜덤으로 1명이 학습한 내용 발표 
+* 코드 리뷰: 매일 15시 20분부터 모든 팀원들이 풀어서 올린 연습 문제의 코드 리뷰하기
+** https://tech.kakao.com/2022/03/17/2022-newkrew-onboarding-codereview/[효과적인 코드 리뷰를 하는 방법]
+* 의논: github organization의 Discussions 기능을 통해 의논했던 내용들 정리해보기!
+* JavaFx -> Servlet (예정)
+
+== 📌 규칙
+
+==== Commit
+* https://junhyunny.github.io/information/github/git-commit-message-rule/[commit 규칙]
+* 위의 글 읽어보고 어떻게 할지 정해보기
+```shell
+git commit -m "..."
+```
+
+==== PR(Pull Request)
+* PR 제목 : 이름 / 챕터
+* ex. `seungjo / Chapter3`
+* Comment는 자유롭게 작성하기 😄
++
++
+
+
+
+=== 🌱 진행 상황
+[]
+[cols="3*^", %autowidth, options=header]
 |===
-| ChapterNumber 
+| ChapterNumber
 | ChapterName
-|Achievement
+| Achievement
 
 | 1
 | link:./Chapter1[Overview: The Mental Landscape]
-| O
+| ✅
 
 | 2
 | link:./Chapter2[Programming in the Small I: Names and Things]
-| O
+| ✅
 
 | 3
 | link:./Chapter3[Programming in the Small II: Control]
-| O
+| ✅
 
 | 4
 | link:./Chapter4[Programming in the Large I: Subroutines]
-| X
+| ✏️ 
 
 | 5
 | link:./Chapter5[Programming in the Large II: Objects and Classes]
-| X
+| 
 |===
 
