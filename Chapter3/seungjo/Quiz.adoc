@@ -243,8 +243,8 @@ Define the range of an array of numbers to be the maximum value in the array min
 public class Main {
     public static void main(String[] args){
         double[] raceTimes = new double[10]; // double 값들이 있다고 가정
-        double maxVal = Math.MIN_VALUE;
-        double minVal = Math.MIN_VALUE;
+        double maxVal = Integer.MIN_VALUE;
+        double minVal = Integer.MAX_VALUE;
 
         for(int i = 0; i < raceTimes.length; i++) {
             maxVal = Math.max(maxVal, raceTimes[i]);
