@@ -212,3 +212,5 @@ buildNumber.properties
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,intellij,java,macos,maven
+Chapter2/.DS_Store
+.DS_Store
