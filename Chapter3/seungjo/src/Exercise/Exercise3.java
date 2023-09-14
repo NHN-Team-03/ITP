@@ -39,5 +39,7 @@ public class Exercise3 {
             System.out.println(result);
         }
 
+        sc.close();
+
     }
 }
