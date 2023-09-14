@@ -5,31 +5,39 @@ To study Introduction to Programming Using Java Version 9.0, JavaFX Edition +
 * Repository: https://github.com/NHN-Team-03/ITP
 
 === 진도
-한번 해보고 내일 다시 얘기하는걸로 +
+매일 협의
 
 === 학습 방법
 
 * 목표까지 자기 학습 및 문제 해결
-* 코드리뷰: 매일 15시 ~ 17시
+* 개인발표: 15시(랜덤)
+* 코드리뷰: 매일 15시 20분 ~ 17시
 * JavaFx -> Servlet?? +
 
-
+[cols=3*, options=header]
 |===
-| ChapterNumber | ChapterName
+| ChapterNumber 
+| ChapterName
+|Achievement
 
 | 1
 | link:./Chapter1[Overview: The Mental Landscape]
+| O
 
 | 2
 | link:./Chapter2[Programming in the Small I: Names and Things]
+| O
 
 | 3
 | link:./Chapter3[Programming in the Small II: Control]
+| O
 
 | 4
 | link:./Chapter4[Programming in the Large I: Subroutines]
+| X
 
 | 5
 | link:./Chapter5[Programming in the Large II: Objects and Classes]
+| X
 |===
 
