@@ -14,12 +14,14 @@
  3. stepwise refinement(단계적 개량)
  4. 디버깅의 황금률(golden rule)을 기억하라: 당신의 프로그램의 모든 것이 옳다고 절대적으로 확신한다면, 그리고 여전히 프로그램이 작동하지 않는다면, 절대적으로 확신하는 것 중 하나는 잘못되었다는 것이다.
 
- *
-
-
-
 * 번외 자바가 실행될때 static, stack, heap의 각각 영역의 역할과 의미 
 * standard I/O의 정확한 정의
+
+*try-catch문의 예외 처리
+ 
+  1. try에서 발생하는 오류는 throwable을 상속받는 exceptioi과 error로 나뉜다.
+  2. checked exception 과 unchecked exception으로 나뉘는데 컴파일러의 체크여부에 따라 나뉜다.
+  3. 
 
 * 용어정리
  
