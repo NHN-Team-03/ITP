@@ -30,6 +30,7 @@
 * 개인 발표: 모든 팀원이 준비해온 후 15시에 랜덤으로 1명이 학습한 내용 발표 
 * 코드 리뷰: 매일 15시 20분부터 모든 팀원들이 풀어서 올린 연습 문제의 코드 리뷰하기
 ** https://tech.kakao.com/2022/03/17/2022-newkrew-onboarding-codereview/[효과적인 코드 리뷰를 하는 방법]
+** 각 챕터당 가장 중요하다고 생각하는 문제 1개를 정해서 함께 완벽한 코드를 완성해보기
 * 의논: github organization의 Discussions 기능을 통해 의논했던 내용들 정리해보기!
 * JavaFx -> Servlet (예정)
 
