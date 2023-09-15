@@ -1,0 +1,216 @@
+= Programming in the Large 1 : Subroutines
+
+== Black Boxes and Procedural Abstraction
+- Subroutine은 몇몇 작업을 수행하기 위한 지시사항으로 구성되며, 함께 묶여서(chunked) 저장된다.
+- subroutine은 내부를 볼 수 없기 때문(보통은 그 내부를 보여 주기 싫어서)에 BlackBox(블랙박스)라고 언급되기도 한다.
+- 인터페이스를 통해 블랙박스 내부와 외부는 어느정도 상호 작용을 한다. - 내부 외부 인터페이스로 구성된다.
+- 블랙박스는 (누를 수 있는)Button, (설정할 수 있는)dial, (정보를 앞 뒤로 전달하는 데 사용)slot을 가질 수 있다.
+
+=== 블랙박스의 첫번째 규칙
+```
+The interface of a black box should be fairly straightforward, well-defined, and easy to understand.
+블랙박스의 인터페이스는 매우 직선적이고, 잘 정의되며, 이해하기 쉬워야 한다.
+```
+- Black Box 내부는 구현(implementation)이라고 불린다.
+
+=== 블랙박스의 두번째 규칙
+```
+To use a black box, you sholdn't need to know anything about its implementation. all you need to know is its interface.
+블랙박스를 사용하려면 그 구현에 대해 알 필요는 없다. 그 인터페이스를 아는 것으로 충분하다.
+```
+- Black box의 동작이 변화가 없는 한 구현을 변경하는 것이 가능해야함
+
+=== 블랙박스의 세번째 규칙
+```
+The implementor of a black box should not need to know anything about the larger systems in which the box will be used.
+블랙박스의 구현자는 박스를 사용할 대형 시스템에 대해 알 필요가 없어야 한다.
+```
+
+- 인터페이스를 단지 물리적 연결로 생각해서는 안된다.
+- 인터펭스는 물리적 인터페이스의 요소를 사용하여 어떻게 제어될 수 있는지에 대한 specification(명세)를 포함한다.
+- 서브루틴의 인터페이스는 구문적(syntactic) + 의미론적(semantic)
+- 구문적부분은 서브루틴을 호출하기 위해 입력해야하는 것
+- 의미론적은 어떠한 작업을 서브루틴이 수행하는 것
+
+== Static Subroutines and Static Variables
+- not-static, static의 기본적 구별이 존재
+- private, public, protected - Access specifiers 존재
+
+=== Calling static subroutines
+[source,java]
+----
+class-name.subroutine-name(parameters);
+----
+
+=== Subroutines in Programs
+
+==== 유사 코드
+[source]
+----
+무작위 숫자를 선택한다
+게임이 끝나지 않는 동안에:
+    사용자의 추측을 얻는다
+    사용자에게 추측이 높은지, 낮은지, 또는 정확한지를 알려준다.
+----
+
+[source]
+----
+설정 computersNumber는 1과 100 사이의 무작위 숫자
+설정 guessCount = 0
+while(true:
+    사용자의 추측을 얻는다
+    1을 guessCount에 추가하여 추측의 수를 센다
+    if 사용자의 추측이 computeesNumber와 같다면:
+        사용자가 이겼음을 알린다.
+        루프를 중단한다
+    if 추측의 횟수가 6이라면:
+        사용자가 졌음을 알린다
+        루프를 중단한다
+    if 사용자의 추측이 computersNumber보다 작다면:
+        추측이 낮다는 사실을 사용자에게 알린다
+    else if 사용자의 추측이 computersNumber보다 크다면:
+        추측이 높다는 사실을 사용자에게 알린다
+----
+
+- 이와같은 단계적 통한 유사코드를 main과 같은 공간이 아닌 서브루틴으로 나누어 표현한다.
+
+[source]
+----
+import textio.TextIO;
+
+public class GuessingGame{
+    public static void main(String[] args){
+        System.out.println("게임을 합시다. 1과 100 사이의 숫자를");
+        System.out.println("내가 고르고, 당신이 이를 추측해보세요.");
+        boolean playAgain;
+        do {
+            playGame();
+            System.out.print("다시 게임을 하겠습니까?");
+            playAgain = TextIO.getlnBoolean();
+        } while (playAgain);
+        System.out.println("게임을 해주셔서 감사합니다. 안녕히.");
+    }
+    static void playGame() {
+        int computersNumber;
+        int usersGuess;
+        int guessCount;
+        computersNuber = (int)(100 * Math.random()) + 1;
+
+        guessCount = 0;
+        System.out.println();
+        System.out.print("첫 번째 추측은 무엇입니까? ");
+        while(ture){
+            sersGuess = TextIO.getInt();  // 사용자의 추측을 얻음.
+            guessCount++;
+            if (usersGuess == computersNumber) {
+                System.out.println("다음 " + guessCount
+                    + " 번의 추측으로 맞추었네요! 나의 숫자는 " + computersNumber);
+                break;  // 게임이 종료됨; 사용자가 승리함.
+            }
+            if (guessCount == 6) {
+                 System.out.println("6번의 추측으로 숫자를 얻지 못했군요.");
+                System.out.println("게임에서 졌습니다. 나의 숫자는 " + computersNumber);
+                break;  // 게임이 종료됨; 사용자가 패배함.
+            }
+            // 이 시점에 도달한 경우 게임은 계속됨.
+            // 추측이 너무 높다거나 낮다는 점을 사용자에게 알림.
+            if (usersGuess < computersNumber)
+                System.out.print("이는 너무 낮습니다. 다시 시도하세요: ");
+            else if (usersGuess > computersNumber)
+                System.out.print("이는 너무 높습니다. 다시 시도하세요: ");
+       }
+       System.out.println();
+   } // playGame() 종료
+
+} // 클래스 GuessingGame 종료
+----
+- 내부변수 - 서브루틴안에 선언한 변수
+- 멤버변수 - 클래스의 멤버 변수 - (global variable)전역변수라고 말할 수도 있다.
+
+
+== Parameters
+- 매개변수 - 서브루틴의 인터페이스 일부분이다.
+- 매개변수는 서브루틴 밖에서 값을 얻고 넘긴다. 즉, 밖에서 할당된 값이 넘어온다.
+- formal parameter - 함수에 선언할 시 매개변수
+[source,java]
+```
+void doTask(int formal)
+```
+- actual parameter - 넘겨주는 변수(값)
+[source, java]
+```
+int actual = 1;
+doTask(actual);
+```
+
+=== Overloading
+- 함수의 이름이 같고 Parameters(매개변수)가 다른 것
+[source,java]
+```
+println(int);
+println(double);
+```
+
+== Return Values
+- 값을 반환하는 subroutine은 function이다
+- return type만 return 가능하다.
+[source, java]
+return expression;
+
+
+== Lambda Expression
+- 익명클래스(anonymous class)
+- 기존의 함수는 프로그램의 영구적인 부분(계속적으로 메모리를 차지한다.)
+
+- Lambda Expression Code - 다음과 같이 사용할 수 있다.
+[source, java]
+----
+public interface ArrayProcessor{
+    public double apply(double[] array);
+}
+
+public class Main{
+
+    private static double[] array = {1.0, 4.0};
+
+    public static void main(String[] args){
+        System.out.println(sumValue.apply(array));
+    }
+
+
+    public static final ArrayProcessor counter(double value) {
+        return array -> {
+            int count = 0;
+            for (int i = 0; i < array.length; i++) {
+                if (array[i] == value)
+                    count++;
+            }
+            return count;
+        };
+    }
+    public static final ArrayProcessor sumValue = arrays -> {
+        double sum = 0.0;
+        for(int i = 0; i < array.length; i++) {
+            sum += array[i];
+        }
+        return sum;
+    };
+}
+----
+
+=== Method Reference
+- classname::method-name
+[source, code]
+----
+static FunctionR2R makePowerFunction( int n ){
+    return x -> Math.pow(x,n);
+}
+System.out.println(sum(Math::sqrt,1,100));
+----
+
+== APIs, Packages, Modules, and Javadoc
+=== Application Programming Interface
+- 어던 루틴이 있는지, 어떤 매개변수를 사용하는지, 어떤 작업을 수행하는지에 대한 명세
+
+=== package
+- java, lang, util
