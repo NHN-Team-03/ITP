@@ -1,0 +1,221 @@
+= Chapter4. Programming in the Large I: Subroutines
+
+== Section 1. Black Boxes and Procedural Abstraction
+
+=== Subroutine
+* 복잡한 프로그램을 나누어 관리가능한 부분으로 만드는 한 가지 방법
+* 서브루틴 = 블랙박스(black box): 다른 세상과 인터페이스(interface)를 통해 상호작용
+** 블랙박스의 내부는 __**구현(implementation)**__이라고 불린다.
+
+=== Interface
+
+> 인터페이스를 단지 박스와 세계의 나머지 사이의 물리적 연결로 생각해선 안된다!
+
+* 인터페이스는 박스가 무엇을 하고 물리적 인터페이스의 요소를 사용하여 어떻게 제어될 수 있는지에 대한 _명세(specification)_ 를 포함한다.
+* 구문적(syntactic) 요소 + 의미론적(semantic) 요소 = 서브루틴의 계약 (contract)
+** 구문적 요소: 서브루틴을 호출하기 위해 입력해야 하는 것
+** 의미론적 요소: 어떤 작업을 서브루틴이 수행하는지를 정확히 명시하는 것
+
+== Section 2. Static Subroutines and Static Variables
+
+* 서브루틴의 기본적인 구분: 정적(static), 비-정적(non-static)
+* static subroutine: 클래스의 자체 멤버
+* non-static subroutine: 객체가 생성될 때만 사용 가능, 서브루틴 자체가 클래스의 멤버
+* 자바에서는 클래스나 객체에 있는 서브루틴을 흔히 `*메서드(Method)*` 라고 부른다.
+
+=== Subroutine Definitions
+
+```
+modifiers return-type subroutine-name (parameter-list) {
+    statements (body)
+}
+```
+
+* statements : subroutine's body, implementation
+* modifiers: 서브루틴의 특정한 특성을 설정
+** 정적인 메서드 : `static`
+** 접근 제어자(Access modifier): `public`, `private`, `protected`, `default`
+* return-type: 반환되는 자료형
+** ex. `int[]`, `double`, `String`, `void` ...
+* parameter-list: 매개변수는 서브루틴의 인터페이스 일부
+** 비어있을 수 있으며, 여러 개의 매개변수를 받을 수 도 있다.
+
+
+=== Calling Subroutines
+* 만약 `Poker` 클래스 밖에서 `Poker` 의 `gameStart()` 를 호출하고 싶다면 다음과 같이 해야할 것이다.
+```
+Poker.playGame();
+```
+
+즉, 다음과 같이 호출하면 된다.
+```
+// non-static method인 경우
+class-name.subroutine-name(parameters);
+
+// 만약 static method(subroutine)이라면?
+subroutine-name(parameters);
+```
+
+
+=== Member Variables
+> local variable / member variable (global variable)
+
+* 서브루틴 내부에 변수를 선언할 수 있다.
+** 이러한 변수는 __지역 변수(local variable)__이라고 한다.
+* 멤버 변수(member variable)는 서브루틴의 일부분이 아닌 한 클래스의 멤버
+** 이러한 멤버 변수도 __static__일 수 있다.
+** 정적 멤버 변수는 클래스 전체에 속하며 클래스가 존재하는 한 존재한다.
+** 이 말은 즉 자바 인터프리터가 클래스를 로드할 때 변수에 메모리가 할당된다.
+** 모든 서브루틴에 "공유"되는 특징을 가지는 것을 알 수 있음.
+
+* 아래는 세 개의 정적 멤버 변수가 있다.
+```java
+static String usersName;
+public static int numberOfPlayers;
+private static double velocity, time;
+// 이 셋의 차이는 무엇인지 맞춰보자.
+```
+
+== Section 3. Parameters
+
+=== Parameters
+* 매개변수는 서브루틴 밖에서 초기 값을 얻는다.
+* 서브루틴을 호출할 때 호출문에서 매개변수에 대해 올바른 타입의 값을 제공해야 한다.
+
+=== Formal Parameter VS. Actual Parameter
+* 서브루틴 정의에서 매개변수를 형식적(formal) 매개변수 또는 더미(dummy) 매개변수라고 한다.
+* 서브루틴이 호출될 때 서브루틴으로 전달되는 매개변수를 실질적(actual) 매개변수 또는 인수(argument)라고 한다.
+
+[source, java]
+----
+static void routine(int number){...} // 'number' = formal parameter
+
+public static void main(String[] args){
+    int val = 3;
+    routine(val); // 'val' <- argument
+}
+----
+
+
+=== Overloading
+* 서브루틴의 시그니처(signature): 매개변수에 대한 모든 정보(타입, 몇 개가 들어와야 하는지)
+** 시그니처에는 매개변수의 이름은 포함되지 않는다는 점을 기억하자
+** 자바는 특이하게 같은 클래스의 서로 다른 서브루틴 두 개가 동일한 이름을 가지는 것을 허용한다.
+
+* 예시로 `println()` 이라는 서브루틴의 시그니처를 생각해보면 다음과 같을 것이다.
+
+[source,java]
+----
+println(int)    println(double)
+println(char)   println(boolean)
+println()
+----
+* 이러한 구현이 가능한 것이 오버로딩을 사용했기 때문이다.
+* 이는 즉 객체 지향 프로그래밍의 다형성(Polymorphism)의 대표적인 예시이다.
+
+
+=== Throwing Exceptions
+
+* 서브루틴을 즉시 중단시키는 방법
+* 던져진 예외(exception)은 `try...catch` 문에 의해 '포착'되어야 프로그램이 멈추지 않을 것이다.
+* _IllegalArgumentException_을 던지는 `throw` 는 다음과 같다.
+```java
+throw new IllegalArgumentException(error-message);
+```
+
+> 항상 전역 변수를 사용하기 전에 반드시 필요한지 고려하며 사용해야 한다.
+
+
+== Chapter 4. Return Values
+
+=== The return statement
+* return expression의 type은 함수에서 지정한 반환 타입과 동일해야 한다.
+
+
+== Chapter 5. Lambda Expression
+
+
+=== Functional Interfaces
+* functional interface는 하나의 서브루틴에 대한 이름, 필요한 매개변수의 수, 자료형, 반환 자료형에 대한 정보를 담고 있다.
+* 클래스와 유사하며 클래스처럼 .java 파일로 정의되나 그저 단일 서브루틴을 위한 명세(specification)이다.
+* 아래는 대표적인 functional interface인 Runnuble 예시
+
+```java
+public interface Runnable {
+    public void run();
+}
+```
+
+=== Lambda Expressions
+
+* 연산자 `->` 를 통해 람다 표현식을 만든다.
+```
+( parameter-list ) -> { statements }
+```
+
+* 아래와 같은 서브루틴이 있다고 해보자
+
+[source, java]
+----
+static void doSeveralTimes( Runnable task, int repCount ) {
+    for (int i = 0; i < repCount; i++) {
+        task.run();  // 작업을 수행한다!
+    }
+}
+----
+
+다음을 호출하여 "Hello World"를 10번 출력할 수 있을 것이다.
+[source, java]
+----
+doSeveralTimes( () -> System.out.println("Hello World"), 10 );
+----
+
+* _Runnable_ 자료형의 람다 표현식에 관해 매개변수 목록이 비어있는 한 쌍의 괄호로 주어진다는 점을 유의하자.
+
+[source, java]
+----
+doSeveralTimes( () -> {
+    // 1부터 5와 25 사이의 어떤 무작위 숫자까지 그 갯수를 센다ㅏ.
+    int count = 5 + (int) (21 * Math.random());
+    for (int i = 1; i <= count; i++) {
+        System.out.print(i + " ");
+    }
+    System.out.println();
+}, 100);
+----
+
+
+=== Method References
+* _Math.sqrt_ 함수를 사용 -> `Math::sqrt` 형식으로 사용
+* 메서드 참조는 람다 표현식의 줄임말일 뿐이다.
+
+```
+classname::method-name
+```
+
+== Chapter 6. APIs, Packages, Modules and Javadoc
+
+
+[source,java]
+----
+/**
+ * 이 서브루틴은 주어진 폭과 높이로 직사각형의 면적을 계산한다.
+ * 폭과 높이는 반드시 양수여야 한다.
+ * @param width 직사각형의 한쪽 면의 길이
+ * @param height 직사각형의 다른쪽 면의 길이
+ * @return 직사각형의 면적
+ * @throws IllegalArgumentException 폭 또는 높이가
+ *    음수인 경우.
+ */
+public static double areaOfRectangle( double length, double width ) {
+    if ( width < 0  ||  height < 0 )
+       throw new IllegalArgumentException("면의 길이는 반드시 양수여야 합니다.");
+    double area;
+    area = width * height;
+    return area;
+}
+
+----
+== Chapter 7.
+
+== Chapter 8.
