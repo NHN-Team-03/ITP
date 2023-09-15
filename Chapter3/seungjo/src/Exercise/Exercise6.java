@@ -5,6 +5,7 @@ public class Exercise6 {
     
         int max = Integer.MIN_VALUE;
         int[] number = new int[10001];
+        int index = 0;
         for (int i = 2; i <= 10000; i++){
             
             int count = 0;
@@ -21,9 +22,8 @@ public class Exercise6 {
         System.out.println("약수의 최대 개수는 " + max);
         System.out.println("이러한 약수의 개수를 가진 숫자들은: ");
         for (int i = 0; i < number.length; i++) {
-            if (number[i] == max) {
-                System.out.println("    " + i);
-            }
+            if (number[i] == max) 
+            System.out.println("    " + i);
         }
     }
 }
