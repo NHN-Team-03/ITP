@@ -1,4 +1,4 @@
-package Chapter2.YongJun;
+package Chapter2.youngjun;
 
 public class practice2 {
 
