@@ -35,14 +35,14 @@ public class Exercise8 {
         for (int i = 0; i < NUMBEROFQUIZ; i++) {
             result = num1[i] + num2[i];
             if (userAnswer[i] == result) {
-                sb.append("문제 " + (i+1) + "번 정답입니다.");
+                sb.append("문제 " + (i + 1) + "번 정답입니다.");
                 count++;
             } else {
-                sb.append("문제 " + (i+1) + "번 틀렸습니다. 정답은 " + result + "입니다.");
+                sb.append("문제 " + (i + 1) + "번 틀렸습니다. 정답은 " + result + "입니다.");
             }
             sb.append("\n");
         }
-        sb.append("점수는 " + count*SCOREOFQUIZ + "점 입니다.");
+        sb.append("점수는 " + count * SCOREOFQUIZ + "점 입니다.");
         System.out.println(sb.toString());
     }
 
