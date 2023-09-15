@@ -1,0 +1,85 @@
+= Chapter 4
+
+== 01. Black Boxes and Procedural Abstraction
+- 블랙박스의 첫 번째 규칙 : 블랙박스의 인터페이스는 꽤나 간단하고, 잘 정의되며, 이해하기 쉬워야 한다.
+- 블랙박스의 두 번째 규칙 : 블랙박스를 사용하려면 그 구현에 대해 알 필요는 없다; 그 인터페이스를 아는 것으로 충분하다. 
+- 블랙박스의 세 번째 규칙 : 블랙박스의 구현자는 박스를 사용할 대형 시스템에 대해 알 필요가 없어야 한다. 
+- 블랙박스는 내부와 외부로 나뉘고, 인터페이스는 외부와 내부의 경계면에 있으며, 이 두 부분을 연결한다.
+- 서브루틴의 인터페이스는 구문적(syntactic) 요소뿐만 아니라 의미론적(semantic) 요소도 가지고 있다고 한다. 인터페이스의 구문적 부분은 서브루틴을 호출하기 위해 입력해야 하는 것을 알려준다. 의미론적 구성요소는 어떠한 작업을 서브루틴이 수행하는지를 정확히 명시한다.
+-> syntactic 요소는 parameter를 뜻하고, semantic 요소는 subroutine의 이름으로 표시한다는 이야기인 듯 하다.
+- To write a legal program, you need to know the syntactic specification of the subroutine. To understand the purpose of the subroutine and to use it effectively, you need to know the subroutine's semantic specification.
+- subroutine이 블랙박스의 유일한 예는 아니다. 클래스도 블랙박스의 예이다.
+- procedural abstraction은 black box principle의 또 다른 용어일 뿐이다.
+
+== 02. Static Subroutines and Static Variables
+- public, private과 더불어 static 또한 modifier이다. public은 access modifier(specifier).
+- default의 경우는 클래스를 포함하는 패키지 안의 어떤 위치에서든 해당 메서드를 호출할 수 있지만 해당 패키지 밖에서는 호출할 수 없음을 뜻한다.
+- static subroutine은 class의 member이다. 반면 non-static subroutine은 object의 member이다??
+- default modifier의 범위 알기.
+
+== 03. Parameters
+- parameter란 subroutine interface의 일부분이다.
+- formal parameter, actual parameter 
+- formal parameter는 subroutine을 정의할 때 사용하는 parameter를 말하고, actual parameter는 subroutine을 호출할 때의 parameter를 말한다.
+- subroutine의 signature subroutine의 name, parameter의 type, parameter의 개수, parameter의 순서
+- subroutine에서 전역변수를 사용하기 전에 이것이 반드시 필요한지를 고려해야 함.
+- 클래스 전체를 블랙박스의 일종으로 본다면, 전역변수를 사용하는 것이 괜찮을 수도 있다.
+
+== 04. Return Values
+- 값을 반환하는 서브루틴을 함수라 한다.
+- return expression
+
+== 05. Lambda Expressions
+- 함수 리터럴을 갖는 것은 함수를 그저 또 다른 종류의 데이터 값으로 생각하는 출발점이다.
+- 변수에 함수를 할당하거나, 서브루틴에 매개변수로 함수를 전달하거나, 서브루틴 값으로 함수를 반환하거나, 또는 심지어 함수의 배열까지 만드는 등, 다른 값들로 할 수 있는 일을 함수로도 할 수 있어야 한다. 이러한 모든 것을 함수로 할 수 있게 하는 프로그래밍 언어는 "1급(first-class) 함수"나 "1급 객체로서의 함수"를 가지고 있다고 한다.
+- functional interface는 값이 함수인 것에 적합한 자료형
+- 람다 표현식은 컴파일러가 그 자료형을 추론할 수 있는 상황에서만 사용될 수 있으며, 매개변수 자료형은 이를 생략하면 람다 표현식의 형식이 모호해지는 경우에만 포함되어야 한다.
+
+== 06. APIs, Packages, Modules, and Javadoc
+- 응용프로그램 프로그래밍(applications programming)이란 서브루틴 도구들을 특정한 프로젝트나 문제에 적용하는 것이다??
+- 모듈이 생긴 이유 +
+1. 더 나은 접근 제어를 제공하기 위해서 +
+2. 모든 표준 클래스를 포함하는 표준 JRE의 크기 때문 -> 모듈화는 응용프로그램에 필요한 모듈만을 포함하는, 더 작은 맞춤형 JRE를 구축할 수 있게 한다.
+
+== 06-5. Javadoc
+- 대부분의 자바 API에 대한 설명서는 Javadoc이라는 시스템을 사용하여 작성된다.
+- /**로 시작하며 */로 끝난다
+- @author 태그는 클래스에만 사용할 수 있으며, 작성자의 이름을 따라야 한다.
+- @param, @return, @throws 태그는 서브루틴의 매개변수, 반환 값 및 서브루틴이 던질 수도 있는 예외에 대한 정보를 제공하기 위해 사용된다. 이러한 태그는 서브루틴 자체에 대한 설명 뒤, 주석의 끝에 반드시 배치되어야 한다.
+- 예시)
+[source, java]
+----
+/**
+ * 이 서브루틴은 주어진 폭과 높이로 직사각형의 면적을 계산한다.
+ * 폭과 높이는 반드시 양수여야 한다.
+ * @param width 직사각형의 한쪽 면의 길이
+ * @param height 직사각형의 다른쪽 면의 길이
+ * @return 직사각형의 면적
+ * @throws IllegalArgumentException 폭 또는 높이가
+ *    음수인 경우.
+ */
+public static double areaOfRectangle( double length, double width ) {
+    if ( width < 0  ||  height < 0 )
+       throw new IllegalArgumentException("면의 길이는 반드시 양수여야 합니다.");
+    double area;
+    area = width * height;
+    return area; 
+}
+----
+- 웹 페이지 문서 생성을 정말로 원한다면 javadoc tool을 실행해야 함. JDK에서 명령으로 사용가능.
+
+== 07. More on Program Design
+- contract란 caller의 obligation을 나타낸다
+- subroutine의 precondition은 subroutine이 호출될 때 subroutine이 올바르게 작동하려면 반드시 참이어야 하는 것이다.
+- subroutine의 postcondition은 subroutine의 obligation을 나타낸다.
+
+== 08. The Truth About Declarations
+- Initialization in Declarations and Named Constants
+- When a variable declaration is executed, memory is allocated for the variable.
+- 선언문은 서브루틴 밖에서 나타날 수 있는 유일한 유형의 문장이다. 할당문은 나타날 수 없다.
+[source, java]
+----
+int[] smallPrimes = { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29 };
+----
+- 위와 같은 문장은 declaration statement시에만 가능. assignment statements에는 사용 불가
+- 변수가 유효한 프로그램 소스 코드의 부분을 변수의 범위(scope)라고 한다.
