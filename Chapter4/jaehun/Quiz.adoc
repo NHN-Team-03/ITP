@@ -25,7 +25,7 @@ actual parameter -> 변수 초기화
 
 === **Question 6:** What is an API? Give an example.
 
-
+해당 toolbox가 어떤 서브루틴이 존재하고 어떤 매개변수를 사용하며, 어떤 일을 하는지에 대한 설명.
 
 === **Question 7:** What might the following expression mean in a program?
 [source]
