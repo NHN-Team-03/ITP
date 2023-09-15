@@ -74,10 +74,10 @@ git commit -m "..."
 
 | 4
 | link:./Chapter4[Programming in the Large I: Subroutines]
-| ✏️ 
+| ✅
 
 | 5
 | link:./Chapter5[Programming in the Large II: Objects and Classes]
-| 
+| ✏️ 
 |===
 
