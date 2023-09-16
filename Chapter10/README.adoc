@@ -1,6 +1,6 @@
-= Chapter 4
+= Chapter 10
 
-== Programming in the Large I: Subroutines
+== Generic Programming and Collection Classes
 
 === 📂 Team Member
 [cols="5*^", %autowidth]

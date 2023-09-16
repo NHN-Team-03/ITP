@@ -1,6 +1,6 @@
-= Chapter 4
+= Chapter 9
 
-== Programming in the Large I: Subroutines
+== Linked Data Structures and Recursion
 
 === 📂 Team Member
 [cols="5*^", %autowidth]
