@@ -1,0 +1,172 @@
+Question 1:
+
+A "black box" has an interface and an implementation. Explain what is meant by the terms interface and implementation.
+```
+interface: black-box가 외부랑 상호작용을 할 수 있도록 만든 장치
+implementation: black-box의 내부 동작
+즉, 블랙박스를 이용하려면 인터페이스는 알아야 하지만 구현(implementation)은 알 필요는 없다.
+```
+
+Question 2:
+
+A subroutine is said to have a contract. What is meant by the contract of a subroutine? When you want to use a subroutine, why is it important to understand its contract?
+The contract has both "syntactic" and "semantic" aspects. What is the syntactic aspect? What is the semantic aspect?
+```
+syntactic aespect: syntactic의 목록은 서브루틴의 이름, 매개변수의 개수, 매개변수의 타입이며, 이는 곧 서브루틴을 정확히 호출하기 위해서 필요한 정보들이다.
+
+semantic aespect: 서브루틴의 의미, 즉 서브루틴이 수행하는 작업을 지정한다. 일반적으로 주석으로 표현한다.
+```
+
+Question 3:
+
+Briefly explain how subroutines can be useful in the top-down design of programs.
+```
+하향식 설계는 하나의 큰 프로그램을 쪼개는 방식으로 설계를 하는 것을 의미하는데 이러한 쪼개는 과정에서 subroutine을 활용할 수 있다.
+```
+
+Question 4:
+
+Discuss the concept of parameters. What are parameters for? What is the difference between formal parameters and actual parameters?
+```
+formal parameter: 말 그대로 형식적으로 지정한 매개변수를 의미한다. sum(int a, int b)라는 메서드가 존재한다면, int a와 int b는 형식적 파라미터라고 할 수 있다.
+
+actual parameter: 실제로 값을 가지고 있고, 메서드를 호출할 때 실제로 넘겨지는 값을 의미한다. sum(3, 5)라고 메서드를 호출했다면 3과 5는 acutal parameters가 되는 셈이다.
+
+정리하자면, 서브루틴(메서드)이 호출되면 실행되기 전에 actual parameters의 값이 formal parameters의 값에 할당이 된다.
+
+```
+
+Question 5:
+
+Give two different reasons for using named constants (declared with the final modifier).
+```
+1. 상수에는 의미있는 이름을 붙이고, 이에 대한 값보다는 '이름'이 더 중요하기 때문이고, 이러한 상수 값은 수정에 용이하다.
+2. 상수에 "final" modifier를 사용하면 변수의 값을 변경할 수 없게 할 수 있기 때문에 사용한다.
+```
+
+Question 6:
+
+What is an API? Give an example.
+```
+API: Application Programming Interface
+누군가가 작성한 서브루틴의 모음(도구 상자)라고 생각하면 편할 것 같다.
+어떻게 동작하는지는 중요하지 않고, 어떻게 호출해야하는지, 어떤 서브루틴이 존재하고 어떻게 사용하는 것에 초점
+
+Java API: java.lang, java.util과 같은 패키지
+```
+
+Question 7:
+
+What might the following expression mean in a program?
+```
+(a,b) -> a*a + b*b + 1
+```
+
+```
+[lambda expression] a의 제곱 + b의 제곱 + 1을
+```
+
+Question 8:
+
+Suppose that SupplyInt is a functional interface that defines the method public int get().
+Write a lambda expression of type SupplyInt that gets a random integer in the range 1 to 6 inclusive.
+Write another lambda expression of type SupplyInt that gets an int by asking the user to enter an integer and then returning the user's response.
+```
+() -> (int) (Math.random() * 6 + 1)
+```
+
+Question 9:
+
+Write a subroutine named "stars" that will output a line of stars to standard output.
+(A star is the character "*".) The number of stars should be given as a parameter to the subroutine.
+Use a for loop. For example, the command "stars(20)" would output
+
+```
+********************
+```
+
+[source, java]
+----
+public class Main {
+
+    static void stars(int num) {
+        for (int i = 0; i < num; i++) {
+            System.out.print("*");
+        }
+    }
+
+    public static void main(String[] args){
+        stars(20);
+    }
+}
+----
+
+Question 10:
+
+Write a main() routine that uses the subroutine that you wrote for Question 7 to output 10 lines of stars with 1 star in the first line, 2 stars in the second line, and so on, as shown below.
+```
+*
+**
+***
+****
+*****
+******
+*******
+********
+*********
+**********
+```
+
+[source, java]
+----
+public class Main {
+
+    static void stars(int num) {
+        for (int i = 0; i < num; i++) {
+            for (int j = 0; j < i + 1; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void main(String[] args) {
+        stars(10);
+    }
+}
+----
+
+Question 11:
+
+Write a function named countChars that has a String and a char as parameters. The function should count the number of times the character occurs in the string, and it should return the result as the value of the function.
+
+Question 12:
+
+Write a subroutine with three parameters of type int. The subroutine should determine which of its parameters is smallest. The value of the smallest parameter should be returned as the value of the subroutine.
+
+Question 13:
+
+Write a function that finds the average of the first N elements of an array of type double. The array and N are parameters to the subroutine.
+
+Question 14:
+
+Explain the purpose of the following function, and explain how it works:
+```java
+static int[] stripZeros( int[] list ) {
+    int count = 0;
+    for (int i = 0; i < list.length; i++) {
+                if ( list[i] != 0 )
+                    count++;
+        }
+        int[] newList;
+        newList = new int[count];
+        int j = 0;
+        for (int i = 0; i < list.length; i++) {
+                if ( list[i] != 0 ) {
+                    newList[j] = list[i];
+                    j++;
+        }
+    }
+    return newList;
+}
+```
