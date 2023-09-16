@@ -1,6 +1,6 @@
-= Chapter 4
+= Chapter 7
 
-== Programming in the Large I: Subroutines
+== Arrays, ArrayLists, and Records
 
 === 📂 Team Member
 [cols="5*^", %autowidth]

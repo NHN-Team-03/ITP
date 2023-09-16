@@ -1,6 +1,6 @@
-= Chapter 4
+= Chapter 6
 
-== Programming in the Large I: Subroutines
+== Introduction to GUI Programming
 
 === 📂 Team Member
 [cols="5*^", %autowidth]
