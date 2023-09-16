@@ -1,6 +1,6 @@
-= Chapter 1
+= Chapter 7
 
-== Overview: The Mental Landscape +
+== Arrays, ArrayLists, and Records
 
 === 📂 Team Member
 [cols="5*^", %autowidth]

@@ -1,6 +1,6 @@
-= Chapter 1
+= Chapter 6
 
-== Overview: The Mental Landscape +
+== Introduction to GUI Programming
 
 === 📂 Team Member
 [cols="5*^", %autowidth]

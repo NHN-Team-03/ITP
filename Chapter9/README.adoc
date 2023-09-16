@@ -1,6 +1,6 @@
-= Chapter 1
+= Chapter 9
 
-== Overview: The Mental Landscape +
+== Linked Data Structures and Recursion
 
 === 📂 Team Member
 [cols="5*^", %autowidth]

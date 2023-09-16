@@ -1,6 +1,6 @@
-= Chapter 1
+= Chapter 10
 
-== Overview: The Mental Landscape +
+== Generic Programming and Collection Classes
 
 === 📂 Team Member
 [cols="5*^", %autowidth]
