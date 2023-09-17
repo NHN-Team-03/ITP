@@ -41,11 +41,11 @@
 * 위의 글 읽어보고 어떻게 할지 정해보기
 
 ```shell
-git commit -m "Code: Chapter 5"
+git commit -m "Code: Chapter5"
 ```
 
 ```shell
-git commit -m "Docs: Chapter 5 (Quiz)"
+git commit -m "Docs: Chapter5 (Quiz)"
 ```
 
 ==== PR(Pull Request)
