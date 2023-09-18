@@ -11,7 +11,7 @@
 
 
 == ✍🏻 학습 방법
-1. 각 챕터에 자신의 이름의 폴더를 생성합니다. 
+1. 각 챕터에 자신의 이름의 폴더를 생성합니다.
 ** 폴더명은 *영어 소문자* 로 합니다. (ex. `Chapter1/seungjo`)
 2. 생성한 폴더에 `_README.adoc_` 파일을 생성합니다.
 3. 하루에 정해진 학습 목표까지 개별로 읽고 자신의 이름 폴더에 정리합니다.
@@ -27,10 +27,10 @@
 
 
 == 💡 학습 방식
-* 개인 발표: 모든 팀원이 준비해온 후 15시에 랜덤으로 1명이 학습한 내용 발표 
+* 개인 발표: 모든 팀원이 준비해온 후 15시에 랜덤으로 1명이 학습한 내용 발표
 * 코드 리뷰: 매일 15시 20분부터 모든 팀원들이 풀어서 올린 연습 문제의 코드 리뷰하기
 ** https://tech.kakao.com/2022/03/17/2022-newkrew-onboarding-codereview/[효과적인 코드 리뷰를 하는 방법]
-** 각 챕터당 가장 중요하다고 생각하는 문제 1개를 정해서 함께 완벽한 코드를 완성해보기
+** 각 챕터당 link:CollabCode[가장 중요하다고 생각하는 문제 1개]를 정해서 함께 완벽한 코드를 완성해보기
 * 의논: github organization의 Discussions 기능을 통해 의논했던 내용들 정리해보기!
 * JavaFx -> Servlet (예정)
 
@@ -52,37 +52,70 @@ git commit -m "Docs: Chapter5 (Quiz)"
 * PR 제목 : 이름 / 챕터
 * ex. `seungjo / Chapter3`
 * Comment는 자유롭게 작성하기 😄
-+
-+
-
 
 
 === 🌱 진행 상황
 []
-[cols="3*^", %autowidth, options=header]
+[cols="4*^", %autowidth, options=header]
 |===
 | ChapterNumber
 | ChapterName
+| Collaboration Code
 | Achievement
+
 
 | 1
 | link:./Chapter1[Overview: The Mental Landscape]
+|
 | ✅
 
 | 2
 | link:./Chapter2[Programming in the Small I: Names and Things]
+|
 | ✅
 
 | 3
 | link:./Chapter3[Programming in the Small II: Control]
+|
 | ✅
 
 | 4
 | link:./Chapter4[Programming in the Large I: Subroutines]
+| link:CollabCode/lambda[Lambda]
 | ✅
 
 | 5
 | link:./Chapter5[Programming in the Large II: Objects and Classes]
-| ✏️ 
+| link:CollabCode/binaryOperator[Binary Operator]
+| ✅
+
+| 6
+| link:./Chapter6[Introduction to GUI Programming]
+| −
+| −
+
+| 7
+| link:../Chapter7[Arrays, ArrayLists, and Records]
+|
+| ✏️
+
+| 8
+| link:/Chapter8[Correctness, Robustness, Efficiency]
+|
+|
+
+| 9
+| link:./Chapter9[Linked Data Structures and Recursion]
+|
+|
+
+| 10
+| link:./Chapter10[Generic Programming and Collection Classes]
+|
+|
+
+|
+|
 |===
+
 
