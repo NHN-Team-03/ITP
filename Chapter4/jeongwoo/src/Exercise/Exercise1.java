@@ -1,4 +1,4 @@
-package Exercise;
+package exercise;
 
 import java.util.Scanner;
 
@@ -12,16 +12,14 @@ public class Exercise1 {
 
     private static void printCapitalized(String str){
         StringBuilder sb = new StringBuilder();
-        for(int i = 0;i<str.length();i++){
-            char ch = str.charAt(i);
+        String words[] = str.split(" ");
 
-            if(Character.isLetter(ch)){
-                ch = Character.toUpperCase(ch);
-                sb.append(ch);
-                continue;
+        for(String word : words){
+            sb.append(Character.toUpperCase(word.charAt(0)));
+            for(int i = 1;i<word.length();i++){
+                sb.append(word.charAt(i));
             }
-
-            sb.append(ch);
+            sb.append(" ");
         }
 
         System.out.println(sb);

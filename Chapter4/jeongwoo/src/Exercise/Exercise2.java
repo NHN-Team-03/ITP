@@ -1,4 +1,4 @@
-package Exercise;
+package exercise;
 
 import java.util.Scanner;
 
@@ -32,6 +32,8 @@ public class Exercise2 {
 
     public static int checkHexValue(char hexValue) {
         switch (hexValue) {
+            case '0':
+                return 0;
             case '1':
                 return 1;
             case '2':
