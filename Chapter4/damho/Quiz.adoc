@@ -1,0 +1,257 @@
+= Chapter4 Quiz
+
+== 1번
+
+**Question**
+
+A "black box" has an interface and an implementation. Explain what is meant by the terms interface and implementation.
+
+**Answer**
+
+- 인터페이스란 블랙박스의 내부와 외부 세계가 소통하는 창구이다.
+- 구현이란 블랙박스 내부이며, 이는 실제로 작업을 수행하는 서브루틴 안의 코드들이다.
+
+== 2번
+
+**Question**
+
+A subroutine is said to have a contract. What is meant by the contract of a subroutine? When you want to use a subroutine, why is it important to understand its contract? The contract has both "syntactic" and "semantic" aspects. What is the syntactic aspect? What is the semantic aspect?
+
+**Answer**
+
+- subroutine의 contract란 subroutine을 올바르게 호출하기 위해서는 무엇을 해야하며, 호출이 된 subroutine은 무슨 일을 할 것인지를 알려준다.
+- subroutine contract를 알아야 subroutine을 올바르게 사용할 수 있기 때문이다.
+- syntactic 측면으로는 subroutine의 이름, subroutine parameter의 개수와 type이 있다.
+- semantic 측면으로는 subroutine이 수행하는 작업을 의미한다.
+
+== 3번
+
+**Question**
+
+Briefly explain how subroutines can be useful in the top-down design of programs.
+
+**Answer**
+
+- top-down 설계를 하면 전체의 큰 문제를 여러가지 작은 문제들로 나누게 되는데, 이때 각각 나눠진 작은 문제들을 해결하기 위한 subroutine들을 작성하면 문제를 편하게 해결할 수 있다.
+
+== 4번
+
+**Question**
+
+Discuss the concept of parameters. What are parameters for? What is the difference between formal parameters and actual parameters?
+
+**Answer**
+
+- parameter는 subroutine을 부르는 프로그램과 subroutine 사이에 값을? 정보를? 주고받기 위한 방법이다.
+- formal parameter는 subroutine 정의에서의 parameter를 뜻하고, actual parameter는 subroutine을 호출할 때 subroutine으로 전달되는 parameter를 말한다.
+
+== 5번
+
+**Question**
+
+Give two different reasons for using named constants (declared with the final modifier).
+
+**Answer**
+
+- 프로그램 실행 시 중간에 값이 변할 걱정을 하지 않아도 된다.
+- 프로그램 실행 전에 해당 값만 바꾸면 이 값을 참조하는 모든 코드에서 변경된 값이 적용된다. ex) 이자율.
+
+== 6번
+
+**Question**
+
+What is an API? Give an example.
+
+**Answer**
+
+- API란 Application programming Interface이다. subroutine의 toolbox에 대한 인터페이스이다. 어떤 routine을 사용할 수 있고, 어떻게 호출하고, 무엇을 하는지 알려주지만 어떻게 구현되는지는 알려주지 않는다.
+
+== 7번
+
+**Question**
+
+What might the following expression mean in a program?
+[source, java]
+(a,b) -> a*a + b*b + 1
+
+**Answer**
+
+a와 b의 값을 제곱하고 +1 해라.
+
+== 8번
+
+**Question**
+
+Suppose that SupplyInt is a functional interface that defines the method public int get(). Write a lambda expression of type SupplyInt that gets a random integer in the range 1 to 6 inclusive. Write another lambda expression of type SupplyInt that gets an int by asking the user to enter an integer and then returning the user's response.
+
+**Answer**
+
+[source, java]
+----
+import java.util.Random;
+import java.util.Scanner;
+
+public class Question8 {
+    public static final SupplyInt inputIntReturn = () -> {
+        Scanner s = new Scanner(System.in);
+        int inputInt;
+
+        System.out.print("정수 입력해 주세요 : ");
+        inputInt = s.nextInt();
+        s.close();
+        return inputInt;
+    };
+
+    public static final SupplyInt randomDice = () -> {
+        Random random = new Random();
+        return random.nextInt(6) + 1;
+    };
+
+    public static void main(String[] args) {
+        System.out.println(randomDice.get());
+        System.out.println(inputIntReturn.get());
+    }
+}
+
+interface SupplyInt {
+    public int get();
+}
+----
+
+== 9번
+
+**Question**
+
+Write a subroutine named "stars" that will output a line of stars to standard output. (A star is the character "*".) The number of stars should be given as a parameter to the subroutine. Use a for loop. For example, the command "stars(20)" would output
+
+**Answer**
+
+[source, java]
+----
+public static void printStars(int number) {
+        for (int i = 0; i < number; i++) {
+            System.out.print("*");
+        }
+    }
+----
+
+== 10번
+
+**Question**
+
+Write a main() routine that uses the subroutine that you wrote for Question 7 to output 10 lines of stars with 1 star in the first line, 2 stars in the second line, and so on, as shown below.
+
+**Answer**
+
+[source, java]
+----
+public static void main(String[] args) {
+        for (int i = 1; i < 11; i++) {
+            for (int j = 0; j < i; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
+        }
+    }
+----
+
+== 11번
+
+**Question**
+
+Write a function named countChars that has a String and a char as parameters. The function should count the number of times the character occurs in the string, and it should return the result as the value of the function.
+
+**Answer**
+
+public static int countChars(String str, char ch) {
+        int count;
+
+        count = 0;
+        for (int i = 0; i<str.length(); i++) {
+            if(str.charAt(i) == ch) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+== 12번
+
+**Question**
+
+Write a subroutine with three parameters of type int. The subroutine should determine which of its parameters is smallest. The value of the smallest parameter should be returned as the value of the subroutine.
+
+**Answer**
+
+[source, java]
+----
+public static int minValue(int x, int y, int z) {
+        if (x < y) {
+            if (x < z) {
+                return x;
+            } else {
+                return z;
+            }
+        } else {
+            if (y < z) {
+                return y;
+            } else {
+                return z;
+            }
+        }
+    }
+----
+
+== 13번
+
+**Question**
+
+Write a function that finds the average of the first N elements of an array of type double. The array and N are parameters to the subroutine.
+
+**Answer**
+
+[source, java]
+----
+public static double arrayAverage(double[] array, int n) {
+        if (array.length < n) {
+            throw new IllegalArgumentException("배열의 길이보다 n값이 더 큽니다.");
+        }
+        
+        double sum;
+
+        sum = 0;
+        for (int i = 0; i < n; i++) {
+            sum += array[i];
+        }
+        return sum / n;
+    }
+----
+
+== 14번
+
+**Question**
+
+[source, java]
+----
+static int[] stripZeros( int[] list ) {
+    int count = 0;
+    for (int i = 0; i < list.length; i++) {
+        if ( list[i] != 0 )
+            count++;
+    }
+    int[] newList;
+    newList = new int[count];
+    int j = 0;
+    for (int i = 0; i < list.length; i++) {
+        if ( list[i] != 0 ) {
+            newList[j] = list[i];
+            j++;
+        }
+    }
+    return newList;
+}
+----
+
+**Answer**
+
+- parameter로 들어온 list배열의 값 중에서 0이 아닌 숫자들만 새로운 배열에 담아 return.
