@@ -180,5 +180,44 @@ public abstract class Shape {
 } // end of class Shape
 ----
 
+== **Nested class**
 
+* static nested class
+* non-static nested class (inner class)
 
+containing class는 nested class 의 멤버가 private이라도 접근할 수 있다.
+
+containing class에서만 사용하는 class라면 nested class로 사용하는게 바람직하다.
+
+nested class가 containing class의 멤버 변수를 사용하는 경우 -> non-static
+
+Local class::
+서브루틴의 local class는 해당 서브루틴의 매개변수와 지역 변수를 사용할 수 있지만 제한이 있다.
+1. 지역 변수나 매개변수가 final로 선언이 되어야 한다.
+2. 만약 final로 선언되지 않았다면 그 변수나 매개변수의 값이 서브루틴 내부에서 변하지 않아야 한다.
+
+* 전역 변수를 사용하는것에는 문제가 없다.
+
+[source]
+----
+FunctionalR2R[] multipliers = new FunctionalR2R[100];
+for(int i = 0; i < 100; i++) {
+   int n = i;
+   multipliers[i] = z -> n * z;
+}
+----
+i 는 final 변수가 아니기 때문에 직접적으로 람다 표현식에 사용하는게 불가능하다.
+하지만 n은 for문 내부에서 final 변수처럼 사용되기 때문에 람다 표현식에서 사용하는게 가능하다.
+
+[source]
+----
+FunctionalR2R[] multipliers = new FunctionalR2R[100];
+for(int i = 0; i < 100; i++) {
+   int n = i;
+   multipliers[i] = new FunctionalR2R() {
+      public double valueAt(double x) {
+         return n * x;
+      }
+   };
+}
+----
