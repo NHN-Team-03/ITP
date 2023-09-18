@@ -1,9 +1,14 @@
-package Exercise;
+package exercise;
+
+import java.util.Scanner;
 
 public class Exercise3 {
     public static void main(String[] args) {
-        int count = sumDoubleDice(2);
+        Scanner scanner = new Scanner(System.in);
+        int input = scanner.nextInt();
+        int count = sumDoubleDice(input);
         System.out.println("걸린 횟수 : " + count);
+        scanner.close();
     }
 
     private static int sumDoubleDice(int input) {
