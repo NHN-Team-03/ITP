@@ -1,0 +1,34 @@
+== 1. Black Box (interface)인터페이스와 (implementation)구현 용어의 의미
+```
+interface - 블랙박스 안과 밖의 중간 경계에 있으며 이어주는 역할을 한다
+            - 단지 물리적연결 뿐만아니라 인터페이스의 요소를 사용하여
+                    어떻게 제어될 수 있는지에 대한 명세도 표현
+implementation - 블랙박스 내부
+```
+
+== 2. subroutine's contract 의미, 중요성 두개의 syntactic semantic 측면에서 설명
+```
+syntactic - subroutine을 호출하기 위해 입력해야 하는 것
+semantic - 어떤 작업을 subroutine이 수행하는 지
+이 두부분을 contract
+```
+
+== 3. subroutine이 (top-down-design)하향식 설계에서 어떻게 유용할 수 있는지 간략히 설명
+```
+
+```
+
+== 4. parameter의 개념, formal parameter와 actual parameter의 차이점
+
+== 5. (final) 선언된 상수를 사용하는 이유 두가지
+- 이후에 변경되지 않아야 한다.
+- 자주 사용되는 상수에 의미있는 이름을 붙이기 위해서..
+
+== 6. API란 무엇인가?
+- Applications Programming Interface
+
+== 7. 프로그램에서 다음 표현식은 무엇을 의미?
+[source, java]
+----
+(a,b) -> a*a + b*b + 1
+----
