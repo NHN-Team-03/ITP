@@ -26,7 +26,7 @@ public record FullName(String firstName, String lastName) {
      * field is null.
      */
     public FullName(String name) {
-        this(name,null);
+        this(name, null);
     }
 
     /**
@@ -35,10 +35,11 @@ public record FullName(String firstName, String lastName) {
      * and the last name, separated by a space.
      */
     public String toString() {
-        if (lastName == null)
+        if (lastName == null) {
             return firstName;
-        else
+        } else {
             return firstName + " " + lastName;
+        }
     }
 
     /**

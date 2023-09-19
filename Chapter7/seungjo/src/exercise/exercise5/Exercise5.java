@@ -49,12 +49,9 @@ public class Exercise5 {
             if (num == 0) {
                 break;
             }
-            // insertionSort(arr, count, num);
-            arr[i] = num;
+            insertionSort(arr, count, num);
             count++;
         }
-
-        quickSort(arr, 0, count - 1);
 
         for (int i = 0; i < count; i++) {
             System.out.print(arr[i] + " ");
