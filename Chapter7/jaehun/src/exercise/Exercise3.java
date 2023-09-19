@@ -6,7 +6,7 @@ public class Exercise3 {
     public static void main(String[] args) {
         double[] array = new double[10000];
 
-        for(int i = 0; i < array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             array[i] = Math.random() * 10000;
         }
 
@@ -24,6 +24,14 @@ public class Exercise3 {
     private static void selectionSortTime(double[] array) {
         long startTime = System.nanoTime();
 
+        selectionSort(array);
+
+        long endTime = System.nanoTime();
+        System.out.println(endTime - startTime);
+
+    }
+
+    private static void selectionSort(double[] array) {
         int checkSize = array.length;
 
         while (checkSize > 0) {
@@ -40,10 +48,6 @@ public class Exercise3 {
             array[maxValuePoint] = array[checkSize];
             array[checkSize] = temp;
         }
-
-        long endTime = System.nanoTime();
-        System.out.println(endTime - startTime);
-
     }
 
     private static void arraysSortTime(double[] array) {

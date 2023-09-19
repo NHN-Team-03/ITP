@@ -15,7 +15,7 @@ public class Exercise6 {
 
         sort(list);
 
-        for(String word : list) {
+        for (String word : list) {
             System.out.println(word);
         }
     }
@@ -29,16 +29,16 @@ public class Exercise6 {
         ArrayList<String> list = new ArrayList<>();
 
         String line;
-        while((line = br.readLine()) != null) {
+        while ((line = br.readLine()) != null) {
             line = line.toLowerCase();
             String[] words = line.split(" ");
 
             StringBuilder sb = new StringBuilder();
 
-            for(String word : words) {
+            for (String word : words) {
                 sb.delete(0, sb.length());
-                for(int i = 0; i < word.length(); i++) {
-                    if(Character.isLetter(word.charAt(i))) {
+                for (int i = 0; i < word.length(); i++) {
+                    if (Character.isLetter(word.charAt(i))) {
                         sb.append(word.charAt(i));
                     }
                 }
@@ -52,12 +52,8 @@ public class Exercise6 {
     }
 
     private static void addWord(ArrayList<String> list, String string) {
-        for(String word : list) {
-            if(string.equals(word)) {
-                return;
-            }
+        if (list.indexOf(string) == -1) {
+            list.add(string);
         }
-
-        list.add(string);
     }
 }
