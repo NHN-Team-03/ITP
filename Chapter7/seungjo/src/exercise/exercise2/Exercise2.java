@@ -3,7 +3,7 @@ package exercise.exercise2;
 public class Exercise2 {
 
     private static int[][] transpose(int[][] originalMatrix) {
-        
+
         int R = originalMatrix.length;
         int C = originalMatrix[0].length;
 
@@ -25,13 +25,13 @@ public class Exercise2 {
             System.out.println();
         }
     }
-    
-    
+
+
     public static void main(String[] args) {
         int[][] originalMatrix = {
-                { 1, 2, 3 },
-                { 4, 5, 6 },
-                { 7, 8, 9 }
+                {1, 2, 3},
+                {4, 5, 6},
+                {7, 8, 9}
         };
 
         int[][] result = transpose(originalMatrix);
@@ -39,12 +39,10 @@ public class Exercise2 {
         System.out.println("Original Matrix");
         printMatrix(originalMatrix);
 
-        
+
         System.out.println("\nTranspose Matrix");
         printMatrix(result);
     }
-
-
 
 
 }

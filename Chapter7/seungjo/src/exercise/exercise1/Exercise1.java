@@ -6,7 +6,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class Exercise1 {
-    private Random random = new Random();
+    private static Random random = new Random();
 
     public static void createArrayList(int size, int max) {
 
