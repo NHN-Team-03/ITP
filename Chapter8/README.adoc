@@ -1,0 +1,10 @@
+= Chapter 8 Correctness, Robustness, Efficiency
+
+== Section 1: Introduction to Correctness and Robustness
+- A PROGRAM is correct if it accomplishes the task that it was designed to perform.
+- It is robust if it can handle illegal inputs and other unexpected situations in a reasonable way.
+- 필수 도서 : Computer Ethics by Tom Forester and Perry Morrison
+== Section 2: Writing Correct Programs
+== Section 3: Exceptions and try..catch
+== Section 4: Assertions and Annotations
+== Section 5: Analysis of Algorithms
