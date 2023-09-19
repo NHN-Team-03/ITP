@@ -37,7 +37,7 @@ public class exercise6 {
 
     public static void main(String[] args) throws IOException {
         List<String> list = new ArrayList<>();
-        File file = new File("Chapter6/damho/src/exercise/exericse6/test.txt");
+        File file = new File("Chapter7/damho/src/exercise/exericse6/test.txt");
         BufferedReader reader = new BufferedReader(new FileReader(file));
         addStringToList(reader.readLine(), list);
         sortStringList(list);
