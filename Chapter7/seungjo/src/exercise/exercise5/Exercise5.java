@@ -15,11 +15,28 @@ public class Exercise5 {
         arr[loc + 1] = num;
     }
 
-    public static void quickSort(int[] arr) {
-        int pivot = arr[0];
-        
+    public static int partition(int[] arr, int left, int right) {
+        int pivot = arr[right];
+        int i = left - 1;
+
+        for (int j = left; j < right; j++) {
+            if (arr[j] <= pivot) {
+                i++;
+
+                // swap: arr[i] <-> arr[j]
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[right];
+        arr[right] = temp;
+
+        return i + 1;
     }
-    
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -32,17 +49,16 @@ public class Exercise5 {
             if (num == 0) {
                 break;
             }
-            insertionSort(arr, count, num);
+            // insertionSort(arr, count, num);
+            arr[i] = num;
             count++;
         }
 
+        quickSort(arr, 0, count - 1);
 
-        for (int number : arr) {
-            if (number == 0) {
-                continue;
-            }
-            System.out.print(number + " ");
+        for (int i = 0; i < count; i++) {
+            System.out.print(arr[i] + " ");
         }
-        
+
     }
 }

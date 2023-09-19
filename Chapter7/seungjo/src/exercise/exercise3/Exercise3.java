@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 public class Exercise3 {
 
+    private static final int SIZE = 100;
+
     public static void selectionSort(double[] arr) {
 
         for (int i = 0; i < arr.length - 1; i++) {
@@ -29,7 +31,7 @@ public class Exercise3 {
         // Scanner sc = new Scanner(System.in);
         Random random = new Random();
 
-        double[] arr = new double[10000];
+        double[] arr = new double[SIZE];
 
         System.out.println("Array's size is 10.");
         System.out.println("Enter the numbers: ");
@@ -45,7 +47,6 @@ public class Exercise3 {
         Arrays.sort(arr);
         long endTime = System.nanoTime();
         System.out.println("Arrays.sort() : " + (endTime - startTime) + " nano seconds");
-
 
         // TODO: selectionSort 시간 계산
         startTime = System.nanoTime();
