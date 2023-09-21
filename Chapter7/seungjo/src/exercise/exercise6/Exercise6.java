@@ -23,7 +23,7 @@ public class Exercise6 {
             String line;
             while ((line = br.readLine()) != null) {
                 line = line.toLowerCase();
-                if (list.indexOf(line) == -1) {
+                if (!list.contains(line)) {
                     list.add(line);
                 }
             }

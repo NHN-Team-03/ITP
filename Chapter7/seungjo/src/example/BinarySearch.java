@@ -12,13 +12,9 @@ public class BinarySearch {
 
             if (arr[middle] == number) {
                 return middle;
-            }
-
-            else if (arr[middle] > number) {
+            } else if (arr[middle] > number) {
                 high = middle - 1;
-            }
-
-            else {
+            } else {
                 low = middle + 1;
             }
         }
@@ -28,6 +24,6 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        System.out.println(binarySearch(new int[] { 1, 2, 3, 4, 5, 6}, 5));
+        System.out.println(binarySearch(new int[] {1, 2, 3, 4, 5, 6}, 5));
     }
 }
