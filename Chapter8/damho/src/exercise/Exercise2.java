@@ -4,7 +4,8 @@ import java.math.BigInteger;
 import java.util.Scanner;
 
 public class Exercise2 {
-    public static Scanner scanner = new Scanner(System.in);
+    private static final BigInteger THREE = new BigInteger("3");
+    public static final Scanner scanner = new Scanner(System.in);
 
     public static String getInputString() {
         System.out.println("숫자를 입력해 주세요 : ");
@@ -12,11 +13,11 @@ public class Exercise2 {
     }
 
     public static BigInteger threeNPlusOne(BigInteger n) {
-        if (n.mod(new BigInteger("2")).intValue() == 0) {
-            n = n.divide(new BigInteger("2"));
+        if (n.mod(BigInteger.TWO).intValue() == 0) {
+            n = n.divide(BigInteger.TWO);
         } else {
-            n = n.multiply(new BigInteger("3"));
-            n = n.add(new BigInteger("1"));
+            n = n.multiply(THREE);
+            n = n.add(BigInteger.ONE);
         }
         return n;
     }
@@ -29,6 +30,7 @@ public class Exercise2 {
                 inputString = getInputString();
                 if (inputString.isEmpty()) {
                     System.out.println("프로그램을 종료합니다.");
+                    scanner.close();
                     return;
                 }
                 try {
