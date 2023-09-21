@@ -7,7 +7,8 @@ public class Exercise2 {
 
     private static final BigInteger ONE = BigInteger.ONE;
     private static final BigInteger TWO = BigInteger.TWO;
-    private static final BigInteger ZERO = BigInteger.ZERO;
+    private static final BigInteger THREE = new BigInteger("3");
+
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -50,9 +51,9 @@ public class Exercise2 {
         while (!(bigInteger.equals(ONE))) {
             // 짝수인지 판별
             if (!bigInteger.testBit(0)) {
-                bigInteger = bigInteger.divide(new BigInteger("2"));
+                bigInteger = bigInteger.divide(TWO);
             } else {
-                bigInteger = bigInteger.multiply(new BigInteger("3")).add(new BigInteger("1"));
+                bigInteger = bigInteger.multiply(THREE).add(ONE);
             }
             sb.append(bigInteger).append(" ");
             count++;
