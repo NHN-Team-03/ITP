@@ -1,12 +1,8 @@
 package Chapter8.damho.src.exercise.exercise3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class RomanNumber {
     private int intValue;
     private String stringValue;
-    private static final List<Character> validRomanNumber = ValidRomanNumber.validRomanNumberList;
     private static final String[] stringArr = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
     private static final int[] intArr = { 1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
 
@@ -18,16 +14,9 @@ public class RomanNumber {
         return this.stringValue;
     }
 
-    public void init() {
-        if (validRomanNumber.isEmpty()) {
-            ValidRomanNumber.init();
-        }
-    }
-
     public RomanNumber(String inputString) {
-        init();
         if (!inputStringCheck(inputString)) {
-            throw new NullPointerException(inputString + "는 유요한 로마숫자가 아닙니다.");
+            throw new NumberFormatException(inputString + "는 유효한 로마숫자가 아닙니다.");
         }
         this.stringValue = inputString;
         // string -> int로 변환
@@ -35,7 +24,6 @@ public class RomanNumber {
     }
 
     public RomanNumber(int inputInt) {
-        init();
         if (inputInt < 0 || inputInt > 3999) {
             throw new NumberFormatException("int형은 0보다 크고 4000보다 작아야 합니다.");
         }
@@ -72,82 +60,48 @@ public class RomanNumber {
         return builder.toString();
     }
 
+    private boolean inputStringCheck(String inputString) {
+        if (!isInRomanNumberList(inputString) || !isSameRomanNumber(inputString)) {
+            return false;
+        } 
+        return true;
+    }
+
     private static boolean isInRomanNumberList(String inputString) {
         char ch;
-        for (int i = 0; i < validRomanNumber.size(); i++) {
+        for (int i = 0; i < inputString.length(); i++) {
             ch = inputString.charAt(i);
-            if (!validRomanNumber.contains(ch)) {
+            if (!isRomanNumber(ch)) {
                 return false;
             }
         }
         return true;
     }
 
-    private static boolean threeSameRomanNumber(String inputString) {
+    private static boolean isRomanNumber(char ch) {
+        for (Roman r : Roman.values()) {
+            if (ch == r.getCharValue()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isSameRomanNumber(String inputString) {
         for (int i = 0; i < inputString.length() - 4; i++) {
-            if (inputString.charAt(i) == inputString.charAt(i + 1)
-                    && inputString.charAt(i + 1) == inputString.charAt(i + 2)
-                    && inputString.charAt(i + 2) == inputString.charAt(i + 3)) {
+            char first = inputString.charAt(i);
+            char second = inputString.charAt(i + 1);
+            char third = inputString.charAt(i + 2);
+            char fourth = inputString.charAt(i + 3);
+            if (first == second && second == third && third == fourth) {
                 return false;
             }
         }
-
         return true;
-    }
-
-    private boolean inputStringCheck(String inputString) {
-        if (!isInRomanNumberList(inputString) || !threeSameRomanNumber(inputString)) {
-            return false;
-        } else {
-            return true;
-        }
     }
 
     @Override
     public String toString() {
         return this.getStringValue() + " : " + this.getIntValue();
-    }
-
-    static final class ValidRomanNumber {
-        private ValidRomanNumber() {
-        }
-
-        private static List<Character> validRomanNumberList = new ArrayList<>();
-
-        public static void init() {
-            validRomanNumberList.add('M');
-            validRomanNumberList.add('D');
-            validRomanNumberList.add('C');
-            validRomanNumberList.add('L');
-            validRomanNumberList.add('X');
-            validRomanNumberList.add('V');
-            validRomanNumberList.add('I');
-        }
-    }
-
-    public enum Roman {
-        M('M', 1000),
-        D('D', 500),
-        C('C', 100),
-        L('L', 50),
-        X('X', 10),
-        V('V', 5),
-        I('I', 1);
-
-        private final char charValue;
-        private final int intValue;
-
-        Roman(char charValue, int intValue) {
-            this.charValue = charValue;
-            this.intValue = intValue;
-        }
-
-        public char getCharValue() {
-            return charValue;
-        }
-
-        public int getIntValue() {
-            return intValue;
-        }
     }
 }
