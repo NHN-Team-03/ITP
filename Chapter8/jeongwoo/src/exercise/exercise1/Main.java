@@ -39,20 +39,21 @@ public class Main {
                 System.out.println("잘못된 값");
             }
 
-            System.out.println("Are you again? (Y/N)");
-            input = scanner.next();
-            switch (input){
-                case "Y":
-                    again = true;
-                    break;
-                case "N":
-                    again = false;
-                    break;
-                default:
-                    System.out.println("잘못된 값");
-                    break;
+            question:while(true){
+                System.out.println("Are you again? (Y/N)");
+                input = scanner.next();
+                switch (input){
+                    case "Y":
+                        again = true;
+                        break question;
+                    case "N":
+                        again = false;
+                        break question;
+                    default:
+                        System.out.println("잘못된 값");
+                        break;
+                }
             }
-
         }
 
         scanner.close();

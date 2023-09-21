@@ -11,7 +11,7 @@ public class RomanNumerals {
         if (!romanNumerals.matches(regExp)) {
             throw new NumberFormatException("문자가 아닌 값들이 포함되어 있습니다.");
         }
-        convertRomalToArabic(romanNumerals);
+        convertRomanToArabic(romanNumerals);
 
         if (1 >= this.arabicNumerals || this.arabicNumerals >= 3999) {
             throw new NumberFormatException("1~3999의 값이 입력되어야 합니다.");
@@ -25,7 +25,7 @@ public class RomanNumerals {
         convertArabicToRomal(arabicNumerals);
     }
 
-    private void convertRomalToArabic(String romanNumerals) {
+    private void convertRomanToArabic(String romanNumerals) {
         this.arabicNumerals = 0;
         for (int i = 0; i < romanNumerals.length(); i++) {
             char one = romanNumerals.charAt(i);
