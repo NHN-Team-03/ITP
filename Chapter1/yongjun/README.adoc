@@ -2,7 +2,7 @@
 
 ## Overview: The Mental Landscape
 
-###section 1.1
+### section 1.1
 The Fetch and Execute Cycle: machine language
 
  1. 각 컴퓨터(운영체제)마다 고유한 muchine language가 존재해 해당 언어로 표현되어야만 직접 실행할 수 있다(다른 언어로 작성된 프로그램을 먼저 기계어로 번역하면 사용할 수있다)
@@ -55,13 +55,3 @@ The Fetch and Execute Cycle: machine language
  24. 인터넷을 통한 통신은 모두 packets 형태라 하고 패킷은 다른 컴퓨터로 전송되는 데이터와 가야할 주소 지정 정보로 구성된다. 안에 내용물을 담은 봉투라고 생각하면된다. 그러므로 반환 주소도 담겨 있으면 패킷에는 일정양의 데이터만 담을 수 있어 큰 데이터는 여러 패킷으로 분활하여 전송한다.
 
  25. 컴퓨터마다 고유한 ip주소가 존재하면 domain names로 식별된다.
-
-
-| 이름   | 폴더                   |
-| ------ | ---------------------- |
-| 정승조 | [seungjo](./seungjo)   |
-| 이정우 | [jeongwoo](./jeongwoo) |
-| 유용준 | [yongjun](./yongjun)   |
-| 이담호 | [damho](./damho)       |
-| 장재훈 | [jaehoon](./jaehoon)   |
-
