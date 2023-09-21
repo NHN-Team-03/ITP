@@ -21,7 +21,7 @@ public class Exercise2 {
             System.out.print("1보다 큰 숫자를 입력하세요: ");
             input = sc.nextLine();
 
-            if (input.length() <= 0) {
+            if (input.isEmpty()) {
                 System.out.println("종료합니다.");
                 break;
             }

@@ -13,7 +13,7 @@ public class Exercise3 {
             System.out.print("로마 숫자나 정수를 입력하세요: ");
             input = sc.nextLine().trim();
 
-            if (input.length() <= 0) {
+            if (input.isEmpty()) {
                 System.out.println("종료합니다.");
                 break;
             }
