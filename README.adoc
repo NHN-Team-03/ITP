@@ -96,7 +96,7 @@ git commit -m "Docs: Chapter5 (Quiz)"
 
 | 7
 | link:../Chapter7[Arrays, ArrayLists, and Records]
-|
+| line:CollabCode/sort[Sort]
 | ✅
 
 | 8
