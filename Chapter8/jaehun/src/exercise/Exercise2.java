@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Exercise2 {
 
     private static int count;
+    private static final BigInteger THREE = new BigInteger("3");
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -43,14 +44,14 @@ public class Exercise2 {
 
         count++;
 
-        if (number.equals(new BigInteger("1"))) {
+        if (number.equals(BigInteger.ONE)) {
             return;
         }
 
         if (number.intValue() % 2 == 0) {
-            collatzConjecture(number.divide(new BigInteger("2")));
+            collatzConjecture(number.divide(BigInteger.TWO));
         } else {
-            collatzConjecture(number.multiply(new BigInteger("3")).add(new BigInteger("1")));
+            collatzConjecture(number.multiply(THREE).add(BigInteger.ONE));
         }
     }
 }
