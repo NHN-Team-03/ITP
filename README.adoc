@@ -113,9 +113,6 @@ git commit -m "Docs: Chapter5 (Quiz)"
 | link:./Chapter10[Generic Programming and Collection Classes]
 |
 |
-
-|
-|
 |===
 
 
