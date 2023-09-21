@@ -12,7 +12,17 @@ public class Exercise2 {
         return scanner.nextLine();
     }
 
-    public static BigInteger threeNPlusOne(BigInteger n) {
+    private static void printThreeNPlustOne(BigInteger n) {
+        while (true) {
+            n = threeNPlusOne(n);
+            System.out.println(n);
+            if (n.intValue() == 1) {
+                break;
+            }
+        }
+    }
+
+    private static BigInteger threeNPlusOne(BigInteger n) {
         if (n.mod(BigInteger.TWO).intValue() == 0) {
             n = n.divide(BigInteger.TWO);
         } else {
@@ -44,13 +54,7 @@ public class Exercise2 {
                     System.out.println("int 형식으로 입력해 주세요.");
                 }
             }
-            while (true) {
-                n = threeNPlusOne(n);
-                System.out.println(n);
-                if (n.intValue() == 1) {
-                    break;
-                }
-            }
+            printThreeNPlustOne(n);
         }
     }
 }
