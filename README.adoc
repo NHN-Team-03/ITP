@@ -96,13 +96,13 @@ git commit -m "Docs: Chapter5 (Quiz)"
 
 | 7
 | link:../Chapter7[Arrays, ArrayLists, and Records]
-|
-| ✏️
+| link:CollabCode/sort[Sort]
+| ✅
 
 | 8
 | link:/Chapter8[Correctness, Robustness, Efficiency]
 |
-|
+| ✏️
 
 | 9
 | link:./Chapter9[Linked Data Structures and Recursion]
