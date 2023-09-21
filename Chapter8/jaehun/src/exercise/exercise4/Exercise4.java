@@ -13,7 +13,7 @@ public class Exercise4 {
             System.out.print("식을 입력하세요: ");
             String expression = scanner.nextLine();
 
-            if (expression.equals("")) {
+            if (expression.isEmpty()) {
                 break;
             }
 
@@ -29,7 +29,7 @@ public class Exercise4 {
 
                 String line = scanner.nextLine();
 
-                if (line.equals("")) {
+                if (line.isEmpty()) {
                     break;
                 }
 

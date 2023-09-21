@@ -5,18 +5,19 @@ import java.util.Scanner;
 
 public class Exercise2 {
 
-    private static int count = 0;
+    private static int count;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
+            count = 0;
             System.out.print("숫자를 입력하세요 : ");
             String str = scanner.nextLine();
 
             BigInteger number;
 
-            if (str.equals("")) {
+            if (str.isEmpty()) {
                 break;
             }
 

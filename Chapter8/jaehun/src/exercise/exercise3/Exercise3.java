@@ -11,7 +11,7 @@ public class Exercise3 {
 
             String number = scanner.nextLine();
 
-            if (number.equals("")) {
+            if (number.isEmpty()) {
                 break;
             }
 
