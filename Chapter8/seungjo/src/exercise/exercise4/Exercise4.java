@@ -8,6 +8,7 @@ public class Exercise4 {
         Scanner sc = new Scanner(System.in);
 
         String input;
+        String value;
         while (true) {
             System.out.print("표현식을 입력하세요 (종료: enter): ");
             input = sc.nextLine().trim();
@@ -18,13 +19,21 @@ public class Exercise4 {
             try {
                 Expr expr = new Expr(input);
                 System.out.print("x의 값 = ");
-                double x = sc.nextDouble();
-                System.out.println("결과 : " + expr.value(x));
+                value = sc.nextLine().trim();
+
+                double result = expr.value(Double.parseDouble(value));
+                if (Double.isNaN(result)) {
+                    System.out.println("수식이 해당 값에서 정의되지 않았습니다.");
+                } else {
+                    System.out.println("결과 : " + result);
+                }
+
+            } catch (NumberFormatException e) {
+                System.out.println(e.getMessage());
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
         }
-
-
+        sc.close();
     }
 }
