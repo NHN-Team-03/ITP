@@ -1,4 +1,4 @@
-package exercise.exercise3;
+package Chapter8.yongjun.src.exercise.exercise3;
 
 public class RomeToNumber {
 
