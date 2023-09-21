@@ -1,81 +1,78 @@
 package exercise.exercise3;
 
-public class RomanConvert {
+public class RomanNumeralConverter {
 
-    private static int[] intToArabic = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1};
-    private static String[] arabicToInt = {"M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "X", "V", "IV", "I"};
-
-    public RomanConvert(String arabic) {
-        calcArabic(arabic);
+    public RomanNumeralConverter(String romanNumeral) {
+        convertToArabic(romanNumeral);
     }
 
 
-    public RomanConvert(int integer) {
+    public RomanNumeralConverter(int arabicNumber) {
 
-        if (integer <= 1 || integer >= 3999) {
+        if (arabicNumber <= 1 || arabicNumber >= 3999) {
             throw new IllegalArgumentException("1 ~ 3999 값 사이를 넘을 수 없습니다!");
         }
 
-        calcNumber(integer);
+        convertToRomanNumeral(arabicNumber);
     }
 
-    private void calcNumber(int integer) {
+    private void convertToRomanNumeral(int arabicNumber) {
         StringBuilder sb = new StringBuilder();
 
-        while (integer > 0) {
-            if (integer >= 1000) {
+        while (arabicNumber > 0) {
+            if (arabicNumber >= 1000) {
                 sb.append("M");
-                integer -= 1000;
-            } else if (integer >= 900) {
+                arabicNumber -= 1000;
+            } else if (arabicNumber >= 900) {
                 sb.append("CM");
-                integer -= 900;
-            } else if (integer >= 500) {
+                arabicNumber -= 900;
+            } else if (arabicNumber >= 500) {
                 sb.append("D");
-                integer -= 500;
-            } else if (integer >= 400) {
+                arabicNumber -= 500;
+            } else if (arabicNumber >= 400) {
                 sb.append("CD");
-                integer -= 400;
-            } else if (integer >= 100) {
+                arabicNumber -= 400;
+            } else if (arabicNumber >= 100) {
                 sb.append("C");
-                integer -= 100;
-            } else if (integer >= 90) {
+                arabicNumber -= 100;
+            } else if (arabicNumber >= 90) {
                 sb.append("XC");
-                integer -= 90;
-            } else if (integer >= 50) {
+                arabicNumber -= 90;
+            } else if (arabicNumber >= 50) {
                 sb.append("L");
-                integer -= 50;
-            } else if (integer >= 40) {
+                arabicNumber -= 50;
+            } else if (arabicNumber >= 40) {
                 sb.append("XL");
-                integer -= 40;
-            } else if (integer >= 10) {
+                arabicNumber -= 40;
+            } else if (arabicNumber >= 10) {
                 sb.append("X");
-                integer -= 10;
-            } else if (integer >= 9) {
+                arabicNumber -= 10;
+            } else if (arabicNumber >= 9) {
                 sb.append("IX");
-                integer -= 9;
-            } else if (integer >= 5) {
+                arabicNumber -= 9;
+            } else if (arabicNumber >= 5) {
                 sb.append("V");
-                integer -= 5;
-            } else if (integer >= 4) {
+                arabicNumber -= 5;
+            } else if (arabicNumber >= 4) {
                 sb.append("IV");
-                integer -= 4;
-            } else if (integer >= 1) {
+                arabicNumber -= 4;
+            } else if (arabicNumber >= 1) {
                 sb.append("I");
-                integer -= 1;
+                arabicNumber -= 1;
             }
         }
         System.out.println("result: " + sb.toString());
     }
 
-    private void calcArabic(String arabic) {
+    private void convertToArabic(String romanNumeral) {
 
         int number = 0;
 
-        for (int i = 0; i < arabic.length(); i++) {
-            char letter = arabic.charAt(i);
+        for (int i = 0; i < romanNumeral.length(); i++) {
+            char letter = romanNumeral.charAt(i);
             char nextLetter = ' ';
-            if (i < arabic.length() - 1) {
-                nextLetter = arabic.charAt(i + 1);
+            if (i < romanNumeral.length() - 1) {
+                nextLetter = romanNumeral.charAt(i + 1);
             }
 
             switch (letter) {
@@ -94,6 +91,7 @@ public class RomanConvert {
                         number += 100;
                     }
                     break;
+
                 case 'D':
                     number += 500;
                     break;
