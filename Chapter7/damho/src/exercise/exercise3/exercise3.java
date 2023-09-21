@@ -2,8 +2,9 @@ package exercise.exercise3;
 
 import java.util.Arrays;
 
-public class exercise3 {
+public class Exercise3 {
     public static final int SIZE = 100000;
+
     public static void initArray(int[] arr) {
         for (int i = arr.length - 1; i >= 0; i--) {
             arr[i] = SIZE - i;
