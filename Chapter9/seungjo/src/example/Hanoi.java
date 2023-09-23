@@ -5,11 +5,10 @@ public class Hanoi {
     public static void towersOfHanoi(int disks, int from, int to, int spare) {
         if (disks == 1) {
             System.out.println("Move disk 1 from stack " + from + " to stack " + to + ".");
-        }
-        else {
+        } else {
             towersOfHanoi(disks - 1, from, spare, to);
             System.out.println("Move disk " + disks + " from stack " + from + " to stack " + to + ".");
-            towersOfHanoi(disks-1, spare, to, from);
+            towersOfHanoi(disks - 1, spare, to, from);
         }
     }
 
