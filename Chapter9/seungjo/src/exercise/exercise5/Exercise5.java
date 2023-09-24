@@ -80,7 +80,7 @@ public class Exercise5 {
         Random random = new Random();
 
         // TODO: 1023개의 랜덤한 값을 노드에 추가
-        for (int i = 0; i < 1023; i++) {
+        for (int i = 0; i < 10; i++) {
             treeInsert(random.nextInt(2000));
         }
 
@@ -90,7 +90,8 @@ public class Exercise5 {
         double averageDepth = ((double) totalDepth) / leafCount;
 
         System.out.println("리프노드의 총 개수: " + leafCount);
-        System.out.println("리프노드의 평균 깊이: " + averageDepth);
+        // TODO: 평균 깊이(?)를 구해야 함 -> 이게 뭔소리냐
+//        System.out.println("리프노드의 평균 깊이: " + averageDepth);
         System.out.println("리프노드의 최대 깊이: " + maxDepth);
     }
 
