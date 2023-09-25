@@ -1,0 +1,94 @@
+# Generic Programming and Collection Classes
+
+## 1. Generic Programming
+- Generic Programming의 예시로 Smalltalk와 CPP를 예시로 스몰톡은 변수에 자료형 등에 대한 제한이 없어서 아무런 변수를 넣을 수 있고
+ 이를 활용해 제네릭을 구현하고 CPP은 템플릿을 활용해 구현한다.
+- 자바는 점차 템플릿과 구조는 다르지만 비슷한 방식인<T> 제네릭 프로그래밍을 구현했다.
+- 그 중 대표적인 예시로 Collection<T>인터페이스로 promotive type을 제외한 나머지 타입에 대한 다양한 메서드를 제공한다.
+하지만 자료형에 따라 사용을 불가능하거나 의미가 다르게 해석될 수 있는 메서드들이 있다 그러므로 사용자가 용도에 맞춰 사용할 수 있어야한다.
+- 제네릭 타입끼리의 euqal을 통한 비교와 Wrapper Class에 대한 내용이 포함됨
+
+## 2. List and Sets
+- ArrayList, Linked List , Sorting,
+- TreeSet and HashSet 중복을 허락하지 않고 TreeSet의 경우 equal이 아닌 compareTo(), compare()을 활용해서 비교한다
+- TreeSet<String> set = new TreeSet<String>();
+set.addAll(coll);
+ArrayList<String> list = new ArrayList<String>();
+list.addAll(set);  이 코드를
+ArrayList<String> list = new ArrayList<>(new TreeSet<>(coll)); 이렇게 줄일 수 있다.
+- HashSet key value로 방식으로 요소를 찾고 추가하고 제거하는 작업이 매우 효율적이다.
+- HashSet의 Iterator는 임의의 순서로 방문하기 때문에 순서가 중요하지않고 효율성이 중요한 경우 사용한다.
+- Priority Queue(우선 순위 큐) 각 항목별 할달된 우선 순위를 가진 항목들의 컬렉션을 나타내는 추상 데이터 유형
+- Linked List에 우선 순위가 증가하는 순서로 저장하는 방식으로 생성한다.
+- 우선 순위를 알기위해 모든 항목을 비교할 수 있어야하므로 위와 같은 compareTo와 같은 방식을 사용한다.
+- 경우에 따라 iterator와 for-each문이 오름차순으로 순회하지 않으므로 사용할 수 없다.
+
+## 3. Map
+ 1. The Map Interface
+- map은 key와 value로 이루어져 있고 배열과 유사한 구조를 가짐
+- map을 구현하는 종류는 HashMap과 TreeMap이 존재하는데 각각 Tree와 Hash의 특징을 가지고 있다
+- TreeMap은 compare(), compareTo()을 활용해 모든 키를 비교할 수 있어야한다.
+- HashMap은 특정한 순서로 저장하지 않으므로 키를 비교할 필요가 없다.
+2. Views, SubSets, and SubMaps
+- Map은 Collection이 아니기 때문에 itorator가 존재하지 않는다. 그러므로 모든 연결을 반복해야 할 경우 map.keySet()을 통해
+모든 키값을 가진 Set을 반환하는데 이때 새로운 키를 생성해서 반환하는 것이 아닌 실제 키를 반환한다 이를 View라고 부른다
+- View를 활용해 key를 삭제할 경우 실제 Map에서도 제거된다. 하지만 새로운 키를 추가한다고 해도 연결할 값이 없기때문에 불가능하다.
+- 반환된 Set은 이터레이터를 활용해서 작동할 수 있다.
+- map.value()을 사용해 저장된 모든 값을 가진 Collection<V>객체를 반환하는데 KeySet과 달리 value는 동일한 값을 다수의 키에 중복시켜 연결할 수 있으므로 가능하다.(Set은 중복 불가)
+- map.entrySet()은 Map내부의 키와 벨류 모든 요소를 셋으로 반환하는 메서드로 Set<Map.Entry<K,M>>으로 반환된다.
+또한 실제 맵이 반환된것으로 set의 내용을 수정하면 동일하게 맵의 값도 변하게 된다.(Set의 메서드를 활용하기 위해 사용)
+- SubMap은 원래 맵의 키중 일부를 포함하는 맵 연결된 값도 포함
+- SubSet과 SubMap은 일정 범위 내의 항목을 찾을 수 있게 해주는 일반화된 검색 작업
+3. Hash Tables and Hash Codes
+- Hash Table은 해쉬의 키, 벨류의 작동 방식으로 키값에의해 저장되는 위치가 정해지므로 키를 활용해 검색을 할 때 전부 일일히 찾을 필요없이 바로 원하는 값을 찾아낼수 있다.
+- 위치가 겹칠경우 방법에 따라 기존값뒤로 배열로 정의하던지 새로이 공간을 늘리는 등의 방법이 쓰인다.
+- java의 모든 객체는 해시 코드가 있는데 이는 Object에서 객체가 생성될 때 자동으로 생성된다.
+
+## 4. Programming with the Java Collection Framework
+1. Symbol Tables
+- 컴파일러가 변수명가 변수에 해당하는 값을 각각 키와 벨류로서 갖는 구조이다(?????)
+2. Set Inside a Map
+- 책의 색인을 만든다고 하면 색인이 맵 용어는 키, 연결된 값은 해당 용어에 대한 페이지 참조 목록
+3. Using a Comparator
+- Comparator를 활용해 비교하는 방법
+4. Word Counting
+- 단어의 갯수를 세는 활용법
+
+## 5. Writing Generic Classes and Methods
+1. Simple Generic Classes
+- Linked List를 활용해 Queue를 작성하는데 다양한 타입을 받기위해 Generic type으로 받는다
+2. Simple Generic Methodes
+- Class뿐만 아니라 메서드 또한 제네릭으로 선언해 사용할 수 있다.
+3. Wildcard Types
+- public static void drawAll(Collection<? extends Shape> shapes)
+<? extends Shape> 의 의미는 Shape 또는 Shape의 하위 클래스인 모든 유형
+이렇게 하지 않으면 Shape을 상속받은 Retangle등에서 해당 메서드를 인식하지 못하고 사용하지 못한다.
+(필수적인 것은 아니지만, 왜 Java에서 Rects의 컬렉션을 Shapes의 컬렉션으로 사용할 수 없도록 하는지 알아두면 흥미로울 수 있습니다. 모든 Rect는 Shape로 간주되지만 Shapes의 컬렉션으로 사용되는 Rect의 컬렉션에 타원을 추가하는 조금 어색한 메서드를 생각해 보세요.(?????)
+만약 rectangles가 List<Rect> 타입이라고 가정한다면 addOval(rectangles, oval)을 호출하는 것은 규칙상으로 Rects의 목록이 Shapes의 목록이 아니라는 규칙 때문에 허용되지 않습니다. 이 규칙을 없앤다면 addOval(rectangles,oval)은 허용되며 이는 Shapes의 목록에 Oval을 추가합니다. 이것은 나쁘다. 왜냐하면 Oval은 Rect의 하위 클래스가 아니기 때문입니다. Oval은 Rect가 아니며 Rect 목록은 Oval을 포함할 수 없습니다. addOval(rectangles,oval) 호출은 의미가 없으며 허용되지 않아야 합니다.)
+<? super T>는 T자체 또는 T의 상위 클래스인 모든 클래스를 의미한다.
+<?>은 <? extends Object>와 동일하다 즉 가능한 모든 유형과 일치
+4. Bounded Types
+- 와일드카드 타입으로 모든 문제를 해결할 수 없다 이를 사용해 메소드의 정의를 일반화 하여 여러 유형의 개체 컬렉션에서 작동하도록 만들 순 있지만 단일 유형만 가능한 경우는 다르다.\
+제네릭에서 형식 매개변수로 허용되는 유형을 제한하는 방법이 필요해 바운드 타입이 존재한다.
+-  setDisable() 메소드는 Control 객체에 대해 정의되어 있지만 임의의 유형의 객체에 대해 정의되어 있지 않습니다.
+- 따라서 ControlGroup<T>에서 T를 제한하여 Control 및 Control 하위 클래스만 실제 유형 매개변수로 허용할 수 있는 방법이 필요합니다.
+- 일반 "T" 대신에 "<T extends Control>", public class ControlGroup<T extends Control>
+- 이와 같은 방식으로 T의 타입을 Control 혹은 그 하위 클래스로 제한 할 수 있다.
+- 바운드 타입은 제네릭 메소드, 클래스, 인터페이스의 정의의 형식 유형으로만 사용
+- 와일드카드 타입은 주로 메소드의 형식 매개변수의 유형을 선언하는데 사용되며 형식 매개변수로는 사용할 수 없음
+- 바운드 타입은 extends만 사용할 수 있고 super는 사용할 수 없다
+
+## 6. Introductioin the Stream API
+1. Generic Functional Interfaces
+- Stream이란 데이터 컬렉션을 다루는 추상화된 개념으로 병렬처리를 지원해 성능을 향상시킬수있음
+2. Making Streams
+- Sequential Streams(순차 스트림)은 항상 순차적으로 처리
+- Parallel Streams(병렬 스트림)연산이 병렬로 처리될 수 있음
+3. Operations on Streams
+- intermediate operations(중간 연산)은 결과적으로 다른 스트림을 생성함 최종 결과를 얻기 위해선 최종 연산을 적용해야함 +
+mapToInt()는 중간 연산으로, 문자열 스트림을 정수 스트림으로 변환하고, sum()은 최종 연산으로 정수 스트림의 숫자들을 합산합니다.
+- terminal operations(최종 연산)
+4. An Experiment
+- 실제로 스트림은 별로 효율적이지 않다. 대부분의 순차스트림을 병렬화 시킬 수 없기 때문에
+
+
