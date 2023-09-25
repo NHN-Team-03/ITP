@@ -102,17 +102,17 @@ git commit -m "Docs: Chapter5 (Quiz)"
 | 8
 | link:/Chapter8[Correctness, Robustness, Efficiency]
 |
-| ✏️
+| ✅
 
 | 9
 | link:./Chapter9[Linked Data Structures and Recursion]
 |
-|
+| ✅
 
 | 10
 | link:./Chapter10[Generic Programming and Collection Classes]
 |
-|
+| ✏️
 
 | 11
 | link:./Chapter11[Input/Output Streams, Files, and Networking]
