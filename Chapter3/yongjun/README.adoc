@@ -1,0 +1,28 @@
+* 소규모 프로그래밍 II: 제어
+  *  array 와 list의 차이점과 arraylist의 정의
+
+  1. array는 배열로써 인덱스가 존재, list는 가변영역이고 add와 remove가 가능 arraylist는 이 둘의 장점을 모두 가지고 있음 
+  2. 배열(array)은 각각의 개별 항목을 위치 번호로 참조할 수 있도록 항목을 번호순으로 배열하는 데이터 구조
+  3. 핵심!!! 배열은 고정된 크기를 할당하고 random access가 가능하고 list는 add remove가 자유롭고 랜덤한 주소에 할당해 크기가 가변적이고 대신 순차적 접근으로 검색 및 수행한다.
+  
+* 의미상 오류가 없더라도 컴파일러가 확인(can verify)할 수 있어야지만 사용할 수 있다 이를 definite assignment(확정적 할당)이라고 한다.
+
+*알고리즘이란 무엇인가?
+ 
+ 1. 아이디어를 완벽하고, 모호하지 않고, 단계별 작업 절차로 구체화 하는것
+ 2. 프로그램이 임무를 수행하기 위해 취할 단계들(steps)에 대한 아이디어
+ 3. stepwise refinement(단계적 개량)
+ 4. 디버깅의 황금률(golden rule)을 기억하라: 당신의 프로그램의 모든 것이 옳다고 절대적으로 확신한다면, 그리고 여전히 프로그램이 작동하지 않는다면, 절대적으로 확신하는 것 중 하나는 잘못되었다는 것이다.
+
+* 번외 자바가 실행될때 static, stack, heap의 각각 영역의 역할과 의미 
+* standard I/O의 정확한 정의
+
+*try-catch문의 예외 처리
+ 
+  1. try에서 발생하는 오류는 throwable을 상속받는 exceptioi과 error로 나뉜다.
+  2. checked exception 과 unchecked exception으로 나뉘는데 컴파일러의 체크여부에 따라 나뉜다.
+  3. 
+
+* 용어정리
+ 
+ 1. empty block(빈 블럭)
