@@ -12,7 +12,7 @@ public class LinkedList {
 
     private ListNode head;
 
-    private static LinkedList reverseList = new LinkedList();
+    private LinkedList reverseList;
 
     public ListNode getHead() {
         return head;
@@ -49,6 +49,10 @@ public class LinkedList {
     }
 
     public LinkedList reverse(ListNode node) {
+        if(reverseList == null) {
+            reverseList = new LinkedList();
+        }
+
         if (node == null) {
             return reverseList;
         }
