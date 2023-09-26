@@ -1,0 +1,10 @@
+HOW TO AVOID REINVENTING the wheel? Many data structures and algorithms,
+such as those from Chapter 9, have been studied, 
+programmed, and re-programmed by generations of computer science students.
+This is a valuable learning experience. Unfortunately, they have also been programmed and 
+re-programmed by generations of working computer professionals, taking up time that could 
+be devoted to new, more creative work. A programmer who needs a list or a binary 
+tree shouldn't have to re-code these data structures from scratch. They are well-understood 
+and have been programmed thousands of times before. The problem is how to make pre-written, 
+robust data structures available to programmers. In this chapter, we'll look at Java's 
+attempt to address this problem.

@@ -43,7 +43,7 @@ package exercise.exercise7;
 
 import java.util.HashMap;
 
-public class SimpleInterpreter {
+public class SimpleInterpreter2 {
 
     /**
      * Represents a syntax error found in the user's input.
@@ -78,11 +78,11 @@ public class SimpleInterpreter {
         symbolTable.put("pi", Math.PI);
         symbolTable.put("e", Math.E);
         symbolTable.put("sin", new StandardFunction(Functions.SIN));
-        symbolTable.put("cos", new StandardFunction(Functions.SIN));
-        symbolTable.put("tan", new StandardFunction(Functions.SIN));
-        symbolTable.put("abs", new StandardFunction(Functions.SIN));
-        symbolTable.put("sqrt", new StandardFunction(Functions.SIN));
-        symbolTable.put("log", new StandardFunction(Functions.SIN));
+        symbolTable.put("cos", new StandardFunction(Functions.COS));
+        symbolTable.put("tan", new StandardFunction(Functions.TAN));
+        symbolTable.put("abs", new StandardFunction(Functions.ABS));
+        symbolTable.put("sqrt", new StandardFunction(Functions.SQRT));
+        symbolTable.put("log", new StandardFunction(Functions.LOG));
 
         System.out.println("\n\nEnter commands; press return to end.");
         System.out.println("Commands must have the form:\n");
@@ -251,26 +251,26 @@ public class SimpleInterpreter {
             String name = readWord();
             Object object = symbolTable.get(name);
             if (object instanceof Double) {
-                Double val = (Double) object;
+                Double val = (Double) symbolTable.get(name);
+                if (val == null)
+                    throw new ParseError("Unknown variable \"" + name + "\"");
                 return val.doubleValue();
             } else {
-                StandardFunction function = (StandardFunction) object;
+                StandardFunction oper = (StandardFunction) object;
                 TextIO.skipBlanks();
                 if (TextIO.peek() != '(') {
-                    throw new ParseError("Missing left parenthesis");
+                    throw new ParseError("Missing left parenthesis.");
                 }
                 TextIO.getChar();
-
                 TextIO.skipBlanks();
                 double value = expressionValue();
-
                 TextIO.skipBlanks();
                 if (TextIO.peek() != ')') {
-                    throw new ParseError("Missing right parenthesis");
+                    throw new ParseError("Missing right parenthesis.");
                 }
                 TextIO.getChar();
+                return oper.evaluate(value);
 
-                return function.evaluate(value);
             }
         } else if (ch == '(') {
             // The factor is an expression in parentheses.
@@ -310,3 +310,5 @@ public class SimpleInterpreter {
     }
 
 } // end class SimpleInterpreter
+
+// TODO : sin cos abs 등등 구현하기
