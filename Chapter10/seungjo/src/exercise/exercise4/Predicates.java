@@ -17,12 +17,6 @@ public class Predicates {
             }
         }
 
-//        for (T t : coll) {
-//            if (pred.test(t)) {
-//                coll.remove(t);
-//            }
-//        }
-
         // pred.test(obj)가 true인 경우 coll에서 모든 객체 obj를 제거합니다.
         // (이는 coll.removeIf(pred)와 동일한 작업을 수행합니다.)
     }
