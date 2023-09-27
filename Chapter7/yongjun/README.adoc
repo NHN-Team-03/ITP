@@ -1,0 +1,35 @@
+# Chapter 7 - Arrays, ArrayLists, and Records
+
+1. Array Details
+- java5 이전엔 메서드에 Arity(argument)의 갯수가 고정적이여만 했지만 이후 Variable Arity Methods(가변 인자 메서드)가 가능해진다
+- methode(doble... arr) 형식
+- Array Literals 기법으로
+
+```java
+int[] primes = new int[] { 2, 3, 5, 7, 11, 17, 19 };
+```
+* 이러한 형태로 입력하는 것이 가능하고 이게 더 좋을때가 많다.
+
+> 만약 반복문 도중 exeption이 발생한다면 rollback차이에 의해 배열속 인자들의 여부는 어떻게 될까???????
+
+2. Array Processing
+- 배열은 한번 선언되면 크기를 바꿀 수 없는데 이러한 부분을 보안하기 위해 크기를 늘린 배열을 생성해 복사하는지 등의 작업이 이루어 진다
+- 이러한 부분을 보안하기 위해 Dynamic Arrays를 지원하는 ArrayList가 나온다.
+
+3. ArrayList
+- Wrapper class = primitive type을 클래스 변수와 같이 사용하기 위해 래핑하는 클래스
+
+4. Records
+- 기존의 Record는 배열과 더불어 기본 데이터 구조로써 field를 항목을 가지고 field name으로 access된다.(c언어의 struct)
+- java는 원래 Record를 지원하지 않았는데 Java17부터 클래스 형태로 추가되었으나 다른 언어와 다르며 불변하다.
+- class와 비슷하나 인스턴스 변수들을 new로 할당하며 private final로 생성되며 getter가 변수명과 동일한 이름으로 자동 생성된다.
+- Record class는 자동으로 final로 선언되어 확장이 불가능하다
+-자세한 사용법은 차후 조사!!!
+
+5. Searching and Sorting
+- Insert sort
+- Select sort
+- Unsort
+
+6. Two-demensional Arrays
+-이중 배열
