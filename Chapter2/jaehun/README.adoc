@@ -1,0 +1,229 @@
+= Chapter 2
+
+== The Basic Java Application
+
+=== Syntax
+
+* 프로그램이 허용하는것이 무엇인지 결정하는 규칙
+
+=== Semantic
+
+* 작성된 프로그램의 의미를 결정하는 규칙
+* 프로그램이 작성이 되는것만이 아닌 예측한 정확한 결과가 도출 되어야함.
+
+TIP: x++; 이라는 코드를 보았을 때 Syntax에 맞게 작성되었지만 x의 type이 허용하는 value의 값을 넘어선다면 Semantic에 어긋나는 코드가 될 수 있다.
+
+=== Pragmatic, Style
+
+다른 사람들이 코드를 보았을 때 쉽게 이해하고 쉽게 읽을 수 있도록 작성.
+
+=== Built in subroutine
+
+언어의 일부로 프로그램에서 사용할 수 있도록 미리 정의되어 있는 subroutine
+
+=== comment, 주석
+
+컴퓨터가 프로그램을 실행할 때 무시되며 작성한 코드를 이해하기 쉽게 작성하는 것
+
+* / comments /
+* /* Javadoc */
+
+=== class
+
+Java의 모든 프로그래밍은 class 내부에서 수행.
+
+=== main()
+
+java interpreter가 프로그램을 실행할 때 main() subroutine을 호출.
+
+* 해당 subroutine이 다른 subroutine이 사용되는 방법, 순서를 결정
+
+=== Statement
+
+프로그램이 실행될 때 수행할 작업을 컴퓨터에게 알려주는 Script
+
+[source, java]
+----
+optional-package-declaration;
+optional-imports;
+
+public class program-name {
+
+    optional-variable-declarations-and-subroutines;
+    
+    public static void main(String[] args) {
+       statements;
+    }
+    
+    optional-variable-declarations-and-subroutines;
+
+}
+----
+
+* program-name -> 클래스 이름
+* optional-variable-declarations-and-subroutines -> style,
+해당 위치에 variable을 선언하거나 subroutine이 와야하는 자리
+
+*.java:: source code
+*.class:: 컴파일되어 생성된 java bytecode
+
+== Variable and the Primitive Types
+
+* 해당 항목에 이름을 주는 규칙
+* 이름을 사용해서 작업을 하는 규칙
+
+=== Identifier
+
+class, variable, subroutine의 이름을 지정
+
+* camel case
+** addNumber
+* compund names - 일종의 경로
+** System.out.println
+
+=== Variables
+
+메모리에 저장된 data를 참조하거나 사용하기 위해 사용되는 이름
+
+=== assignment statement
+
+variable에 data를 넣기 위해 사용
+
+[source, java]
+----
+variable = expression;
+----
+
+* java에서 variable에 data을 넣는 유일한 방법
+
+=== expression
+
+data를 참조하거나 operation하는 모든 것
+
+[source, java]
+----
+rate = 0.07;
+----
+
+* rate -> variable
+* 0.07 -> expression
+
+=== Primitive type
+
+* byte
+* short -> 2byte
+* int -> 4byte
+* long -> 8byte
+* float -> 4byte
+* double -> 8byte
+* char -> 2byte
+* boolean -> true, false
+
+=== Literal
+
+* 상수 value를 variable에 넣는 방법
+
+* 특수 literal
+** char -> 두문자이지만 단일 문자로 인식
+*** '\n' -> linefeed, 줄바꿈
+*** '\t' -> tab
+
+* String
+** 문자들의 sequence, "Hello, world!"
+
+=== variable declaration statement
+
+[source, java]
+----
+type-name variable-name-or-names;
+----
+
+* 좋은 style은 한 statement에 한 variable만 선언
+* 주석을 사용해서 해당 variable이 어떤 목적으로 사용이 되는지 함께 작성해주는것도 좋은 방법
+
+=== local variable
+
+subroutine 내부에 선언된 varialbe
+
+=== subroutine
+
+* java의 모든 subroutine은 class와 object에 포함된다.
+* function -> subroutine중에서 data의 value를 계산하거나 검색해서 그 value를 return하는 subroutine
+
+
+
+
+
+== Quiz
+
+=== 01. Briefly explain what is meant by the syntax and the semantics of a programming language. Give an example to illustrate the difference between a syntax error and a semantics error.
+
+Syntax = 프로그래밍 언어의 정해져있는 문법, variable을 선언하지 않고 사용 +
+Semantic = 프로그램의 결과가 정확한 결과를 보여주는지에 대한 규칙, MAX_VALUE의 값에 특정한 수를 더했을 때
+
+=== 02. What does the computer do when it executes a variable declaration statement. Give an example.
+
+variable의 memory location에 이름을 붙임
+[source, java]
+----
+int variable;
+----
+
+=== 03. What is a type, as this term relates to programming?
+
+variable이 내부에 가지고 있을 data의 type
+
+=== 04. One of the primitive types in Java is boolean. What is the boolean type? Where are boolean values used? What are its possible values?
+
+해당 statement 알맞은 값인지 확인 할 수 있는 type +
+true, false
+
+=== 05. Give the meaning of each of the following Java operators:
+
+a)    ++ -> 특정한 variable의 값을 1 증가시키는 operator
+
+b)    && -> statement와 statement를 하나의 boolean operation으로 이어주는 역할 두 statement가 모두 true여야 true
+
+c)    != -> 왼쪽의 value가 오른쪽의 value와 다르면 true의 값을 내는 operator
+
+=== 06. Explain what is meant by an assignment statement, and give an example. What are assignment statements used for?
+
+선언되어있는 variable에 data의 값을 넣는 statement
+[source, java]
+----
+variable = value;
+----
+
+=== 07. What is meant by precedence of operators?
+
+operation을 실행할 때 먼저 수행할 operator
+
+=== 08. What is a literal?
+
+variable에 data를 넣는 방법
+
+=== 09. In Java, classes have two fundamentally different purposes. What are they?
+
+1. static variable과 subroutine을 grouping
+2. object를 생성
+
+=== 10. What is the difference between the statement "x = TextIO.getDouble();" and the statement "x = TextIO.getlnDouble();"
+
+getlnDouble() subroutine은 중간 공백을 같이 읽어서 data를 읽어온 이후 나머지 값을 buffer에 저장해 둔다.
+
+=== 11. Explain why the value of the expression 2 + 3 + "test" is the string "5test" while the value of the expression "test" + 2 + 3 is the string "test23". What is the value of "test" + 2 * 3 ?
+
+expression을 실행하는 과정에서 처음 int literal이 등장해서 int type으로 operation을 진행하다가 이후 String literal이 
+나왔기 때문에 String type으로 type casting이 이루어 졌다. +
+"test" + 2 + 3 expression은 이미 처음 String literal이 먼저 나와서 String으로 operation을 수행했기 때문에 test23이라는 결과가 나왔다.
+
+=== 12. Integrated Development Environments such as Eclipse often use syntax coloring, which assigns various colors to the characters in a program to reflect the syntax of the language. A student notices that Eclipse colors the word String differently from int, double, and boolean. The student asks why String should be a different color, since all these words are names of types. What's the answer to the student's question?
+
+
+
+=== 13. What is the purpose of an import directive, such as import textio.TextIO or import java.util.Scanner?
+
+각각의 class에 미리 정의되어져서 존재하는 subroutine을 가져와서 사용하기 위함
+
+=== 14. Write a complete program that asks the user to enter the number of "widgets" they want to buy and the cost per widget. The program should then output the total cost for all the widgets. Use System.out.printf to print the cost, with two digits after the decimal point. You do not need to include any comments in the program.
+

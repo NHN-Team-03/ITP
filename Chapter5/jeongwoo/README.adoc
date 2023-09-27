@@ -1,0 +1,66 @@
+= Programming in the Large 2: Objects and Classes
+- OOP는 단지 관점의 차이 사용 가능한 언어들은 얼마든지 OOP를 사용할 수 있지만, OOP를 적극적으로 지원하는 것에 확실한 차이가 있다.
+== Objects, Instanc Methods, and Instance Variables
+- 프로그램이 실행되는 동안의 static(정적) 존재, 이것이 정적이란 의미의 본질
+- non-static(비정적), dynamic(동적) 으로 선언된 객체 하나하나를 Instance(인스턴스)
+- 이는 클래스에 속하며 클래스에 속하는 변수를 instance variable, 메서드를 instance method
+- 간혹 클래스 변수, 클래스 메소드라고한다.
+- 자바에서 class는 내장 자료형과 유사항 Type(자료형)이다.
+```
+In java, no variable can ever hold an object. A variable can only hold a reference to an object.
+자바에서는, 어떤한 변수도 객체를 가질수 없다. 변수는 오로지 객체에 대한 참조만을 보유할 수 있다.
+```
+- 객체는 Heap이라는 공간에 있고, 변수는 객체를 보유하는 것 대신 Reference & Pointer (참조)한다.
+- 따라서 객체는 new라는 선언을 통해 생성한다.
+- 객체가 참조하지 않으면 null pointer, null reference를 보유한다고 말한다.
+- 이 때, null은 참조한다면 null pointer exception이라는 오류가 발생한다.
+```
+하나의 객체 변수가 다른 것에 할당될 때, 오로지 참조만이 복사된다. 참조된 객체가 복사되는것이 아니다.
+When one object variable is assigned to another, only a reference is copied. The object referred to is not copied.
+```
+- accessor method을 사용 private으로 멤버변수를 정보은닉, 다음과 같은 메소드를 통해 불러와야 한다.
+- getter method
+- setter method - mutator method
+
+== Constructors and Objects Initialization
+- 객체는 명시적으로 생성되어야 함
+- 이때, 클래스는 constructor(생성자)를 통해 객체를 생성한다.
+- 아무것도 선언하지 않았다면, default constructor(기본 생성자)가 생성된다.
+- public, private, protected뿐 static은 사용할 수 없다.
+- Constructor도 Subroutine, 하지만 객체에 속하지는 않기 때문에 instance method는 아님
+
+=== Garbage Collection
+- 생성한다면 제거도 필요하다.
+- 객체에 대한 reference count가 아무것도 존재하지 않는다면, garbage collector가 이를 감지하고 수거한다.
+- 다른 프로그래밍 언어에서는 프로그래머의 몫이며, 이는 dangling pointer error(허상 포인터 오류) & memory leak(메모리 누수)가 발생한다.
+
+== Programming with Objects
+.내장 클래스 ex
+- Random random = new Random();
+- StringBuilder builder = new StringBuilder();
+
+=== 최상위 클래스 Object
+- 거의 모든 클래스가 상속받는다.
+
+== Inheritance, Polymorphism, and Abstract Classes
+- 클래스의 확장, 하위클래스가 상속 받는다.
+- A(super class) -> B(sub class)
+
+=== Polymorphism
+- 다형성
+- Shape class -> Rectangle, Ovals, RoundRects
+
+== This and Super
+- This를 사용하여 객체의 멤버변수를 사용할 수 있다.
+- super 하위 클래스가 상속받을 때 슈퍼클래스의 생성자를 새로 생성해야한다. 이때 super()를 통해 슈퍼클래스의 생성자를 사용
+
+== Interfaces
+- 다중상속은 불가능 하기 때문에 기능적 요소를 추가하기위해 Interfcae를 사용하여 상속(확장한다)받는다.
+
+== Nested Classes
+
+=== Inner Class
+- 내부 클래스에서 외부 클래스 멤버에 쉽게 접근이 가능
+- 관련된 클래스를 논리적으로 묶어 코드의 캡술화 증가
+- 외부에서 내부 클래스에 접근이 안되기 때문에 코드의 복잡성을 줄임
+- Static Clss, Instance Class, Local class, Anonymous Class 
