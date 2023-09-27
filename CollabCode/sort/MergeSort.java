@@ -27,7 +27,7 @@ public class MergeSort {
         int start1 = start;
         int mid = (start1 + end) / 2;
         int index = start1;
-        int start2 = mid;
+        int start2 = mid + 1;
         while (start1 < mid && start2 <= end) {
             if (arr[start1] < arr[start2]) {
                 sortedArr[index++] = arr[start1++];
@@ -37,7 +37,7 @@ public class MergeSort {
 
         }
 
-        while (start1 < mid) {
+        while (start1 <= mid) {
             sortedArr[index++] = arr[start1++];
         }
         while (start2 <= end) {

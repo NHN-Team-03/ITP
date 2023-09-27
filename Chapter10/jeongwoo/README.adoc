@@ -1,0 +1,165 @@
+= Generic Programming and Collection Classes
+
+== Generic Programming
+- 다양한 유형의 데이터에 작동하는 코드를 작성하는 것을 의미
+- ex) ArrayList<T>와 같은 유형
+
+=== SmallTalk ( Generic Programming )
+- 모든 변수는 모든 유형의 데이터를 보유할 수 있음.
+- 데이터 값들이 모두 객체 -> 자바가 추구하는 것(속도와 편의성을 위해 primitive type)
+- '+'과 같은 연산자도 클래스로 정의할 수 있다.
+- 위 두가지 기능으로 어떤 유형의 데이터라도 작동할 수 있다.
+- 그러나 이는 자유롭지만, 견고하기에는 너무 어렵습니다.
+
+=== C++ & JAVA
+- 다른 언어들은 원시타입으로 변수와 값을 저장한다.
+- smalltalk처럼 Generic에 강력하지는 않지만, C++은 templates과 Java는 변수명에 <T> 첨가함으로써 작용할 수 있다.
+
+=== Java Collection Framework (JCF)
+- Java 공통 데이터 구조를 구현하는 여러 매개변수화된 유형이 제공
+- 주로 Collection과 Map이라는 두 가지 범주로 나눌 수 있다.
+- Collection -> ArrayList, List, Set
+- Map
+
+=== Iterators and for-each Loops
+- Collection<T>를 반복자 Iterator<T>를 사용하여 반복자로 처리할 수 있다.
+- iter.next(), iter.hasNext(), iter.remove()
+
+=== Equality and Comparison
+- 객체를 비교할 때 동일한 값과 동일한 위치를 공유하는지 여부를 의미
+- 이 때 Comparable<T> -> compareTo를 통해 비교도 가능하다.
+
+=== Generics and Wrapper Classes
+- wrapper class를 사용하여 Generic사용
+
+== Lists and Sets
+- ArrayList, LinkedList -> List
+- 삽입과 제거가 많을수록 LinkedList
+- 저장된 값을 가져오기 위해서는 ArrayList가 더 효율적입니다. -> ArrayList
+
+=== 정렬
+- Collections.sort(list)
+- Collections.sort(list, Compareable<T>)
+- Collections.reverse(list)
+
+=== TreeSet & HashSet
+- 정렬된 상태로 유지 -> TreeSet
+-  데이터를 해시 코드를 기반으로 저장하며, 내부적으로는 해시 버킷을 사용하여 데이터를 검색 및 관리 -> HashSet
+
+=== Priority Queues
+- Priority Queue는 요소를 우선순위에 따라 정렬합니다.
+- 제거시 가장 앞의 값 제거
+
+== Maps
+- key, value 두 가지 유형 으로 매개변수화
+- HashMap - 값을 넣고 가져올 때 유용
+- TreeMap - 키값에 따라 정렬되어 대부분의 작업이 빠름
+
+=== Views, Subsets, SubMaps
+- View -> map.keySet(), map.valuse()
+- Subsets -> map.subSet(fromIndex, toIndex)
+- SubMaps -> map.subMap(fromElement, toElement)
+- from ~ to-1까지
+
+=== HashTable
+- HashSet, HashMap은 HashTable이라는 데이터 구조를 사용하여 구현
+- 키-> 해시함수 -> 해시 코드로 변환
+- 해시 테이블의 배열보다 키값이 많다면 동일한 해시 테이블에 저장할 수도 있으며 다른 두 키가 같은 해시 코드를 가질 경우 -> 충돌 이는 오류가 아님
+- 따라서 동등서 비교 때 equals()재정의 -> hashCode()도 재정의 필요
+
+== Programming with the Java Collection Framework
+- Symbol Tables - Map과 같은 형식을 심볼릭 테이블 키(이름)에 상응하는 값을 가지고 있는 형식
+- Map<String, TreeSet<Integer>>과 같은 형식으로도 사용가능
+- String에 상응하는 TreeSet
+- 동일하게 Comparator을 사용 가능
+
+== Writing Generic Classes and Methods
+- Simple generic Classes
+[source, java]
+----
+example Generic class 1
+class Queue<T> {
+   private LinkedList<T> items = new LinkedList<>();
+   public void enqueue(T item) {
+      items.addLast(item);
+   }
+   public T dequeue() {
+      return items.removeFirst();
+   }
+   public boolean isEmpty() {
+      return (items.size() == 0);
+   }
+}
+example Generic class 2
+public class Pair<T,S> {
+   public T first;
+   public S second;
+   public Pair( T a, S b ) {  // Constructor.
+      first = a;
+      second = b;
+   }
+}
+----
+=== 와일드 카드 유형(Wildcard Types)
+- bounded type parameters - 제한된 유형 매개변수
+[source, java]
+----
+public static void drawAll(Collection<Shape> shapes) {
+   for (Shape s : shapes)
+      s.draw();
+}
+// Rects 하위 클래스이지만 작동하지 않는다.
+public static void drawAll(Collection<? extends Shape> shapes) {
+   for (Shape s : shapes)
+      s.draw();
+}
+// 다음과 같이 선언해야 하위클래스인 모든 타입도 포함된다.
+----
+
+=== bounded type
+- 그렇다면 이 bounded type은 무엇인가?
+- <T>라고 선언했을 때 제한된 값만 사용하고 싶지만 아무값이나 들어갈 수 있는 형태이다.
+- 사용하고 싶은 것들을 하나로 묶어서 button과 slider을 control로 하여 <T extends Control>로 정의하는 것이다. 즉 상위클래스 superclass로 control을 만드는 것으로 하여금 하위 클래스만으로 제한을 줌
+
+== Introduction the Stream API
+- 작업을 새로운 방식으로 표현하는 도구
+.3가지 순서
+- 1. 데이터 소스에서 Stream 생성
+- 2. 스트리 작업을 순차적으로 적용 데이터 변환 및 처리
+- 3. 원하는 결과를 수집하거나 얻습니다.
+- 스트림이 한 번 사용되면 다시 사용할 수 없음
+[source, java]
+----
+int lengthSum = 0;
+for (String str : stringList) {
+    lengthSum = lengthSum + str.length();
+}
+double average = (double) lengthSum / stringList.size();
+
+// 다음과 같이 변경
+int lengthSum = stringList.parallelStream()
+                          .mapToInt(str -> str.length())
+                          .sum();
+double average = (double) lengthSum / stringList.size();
+----
+
+- 스트림에는 순차와 병렬이 있다. sequential + parallel
+
+- 컬렉션과 배열을 함수형 스트림으로 변환
+.함수형 프로그래밍 스타일
+- filter, map, reduce, forEach 다양한 형태로 제공
+.쉬운 병렬 처리
+- 멀티코어 프로세서 활용 연산을 병렬 처리
+.내부 반복
+- 내부적으로 반복하므로 명시적인 문을 작성할 필요없다.
+.지연 연산
+- 필요한 중간 연산만 하고, 최종 연산에서만 계산
+[source, java]
+----
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+int sum = numbers.stream()
+                .filter(n -> n % 2 == 0)
+                .mapToInt(Integer::intValue)
+                .sum();
+
+----
