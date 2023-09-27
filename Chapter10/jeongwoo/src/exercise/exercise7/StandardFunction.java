@@ -134,11 +134,10 @@ public class StandardFunction {
                 }
                 value = eachVariableValue(result.substring(4,result.length()-1),stringTokenizer);
             }catch (NumberFormatException e){}
-            value = value / 180.0 * Math.PI;
             switch (result.substring(0,3)) {
-                case "sin" -> value = Math.sin(value);
-                case "cos" -> value = Math.cos(value);
-                case "tan" -> value = Math.tan(value);
+                case "sin" -> value = Math.sin(value / 180.0 * Math.PI);
+                case "cos" -> value = Math.cos(value / 180.0 * Math.PI);
+                case "tan" -> value = Math.tan(value / 180.0 * Math.PI);
                 case "abs" -> value = Math.abs(value);
                 case "sqrt" -> value = Math.sqrt(value);
                 case "log" -> value = Math.log(value);
