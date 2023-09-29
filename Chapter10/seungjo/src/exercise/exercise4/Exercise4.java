@@ -33,7 +33,7 @@ public class Exercise4 {
      */
     public static void main(String[] args) {
 
-        Collection<Integer> coll;    // A collection (from makeSet() method).
+        Collection<Integer> coll;
 
         Predicate<Integer> pred = i -> (i % 2 == 0);
 
@@ -71,7 +71,7 @@ public class Exercise4 {
 
         coll = makeSet();
         List<Integer> result = Predicates.collect(coll, pred);
-        System.out.println("100보다 큰 수 " +  result);
+        System.out.println("100보다 큰 수 " + result);
 
         coll = makeSet();
         ArrayList<Integer> list = new ArrayList<>(coll);
@@ -79,6 +79,6 @@ public class Exercise4 {
         System.out.println("100보다 큰 첫 번째 수의 인덱스 : " + index);
 
 
-    } // end main()
+    }
 
-} // end class TestPredicates
+}

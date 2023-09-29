@@ -125,8 +125,6 @@ public class HashTable {
     public boolean containsKey(String key) {
 
         int bucket = hash(key);
-
-
         ListNode list = table[bucket];
 
         while (list != null) {

@@ -1,12 +1,11 @@
 package exercise.exercise3;
 
-import java.util.Hashtable;
 import java.util.Scanner;
 
 public class Exercise3 {
 
     public static void main(String[] args) {
-        HashTable table = new HashTable(2);  // Initial size of table is 2.
+        HashTable table = new HashTable(2);
         Scanner sc = new Scanner(System.in);
         String key;
         String value;
@@ -36,8 +35,7 @@ public class Exercise3 {
                 case 3:
                     System.out.print("\n   Key = ");
                     key = sc.next();
-                    System.out.println("   containsKey(" + key + ") is "
-                            + table.containsKey(key));
+                    System.out.println("   containsKey(" + key + ") is " + table.containsKey(key));
                     break;
                 case 4:
                     System.out.print("\n   Key = ");

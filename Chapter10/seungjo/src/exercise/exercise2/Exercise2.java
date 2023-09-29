@@ -18,10 +18,14 @@ public class Exercise2 {
                 break;
             }
 
-            StringTokenizer st = new StringTokenizer(line, "+*-");
-            int index = line.indexOf("]");
-            char operator = line.charAt(index + 2);
-            computeSet(st.nextToken(), operator, st.nextToken());
+            try {
+                StringTokenizer st = new StringTokenizer(line, "+*-");
+                int index = line.indexOf("]");
+                char operator = line.charAt(index + 2);
+                computeSet(st.nextToken(), operator, st.nextToken());
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
         }
     }
 
@@ -42,6 +46,8 @@ public class Exercise2 {
                 firstSet.retainAll(secondSet);
                 System.out.println(firstSet);
                 break;
+            default:
+                throw new IllegalArgumentException("잘못된 연산자입니다.");
         }
     }
 
