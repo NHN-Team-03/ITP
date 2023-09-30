@@ -10,7 +10,6 @@ public class Exercise7 {
 
     private static class StandardFunction {
         Functions functionCode;
-
         StandardFunction(Functions code) {
             this.functionCode = code;
         }
@@ -212,8 +211,7 @@ public class Exercise7 {
                 }
 
             }
-        }
-        else {
+        } else {
             throw new ParseError("잘못된 입력입니다.");
         }
 

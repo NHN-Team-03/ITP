@@ -11,15 +11,6 @@ import java.util.TreeMap;
 
 public class Exercise6 {
 
-    private static class Book {
-        String title;
-        int count;
-
-        public Book(String title, int count) {
-
-        }
-    }
-
     public static void main(String[] args) {
 
         Map<String, Integer> index;
