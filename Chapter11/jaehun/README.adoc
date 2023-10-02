@@ -1,0 +1,151 @@
+= Chapter11
+
+== **I/O Streams, Readers, and Writers**
+
+* I/O, input/output : 프로그램이 나머지와의 상호 작용
+
+* Java에서 주요 I/O abstraction을 I/O Stream이라고 한다.
+
+=== **Character Stream, Byte Stream**
+
+* Byte Stream
+** OutputStream : 데이터를 Byte Stream으로 출력하는 객체를 포함.
+*** write(c) : output stream에 1 바이트의 데이터를 출력한다.
+*** IOException의 예외가 발생한다.
+** InputStream : Byte Stream에서 데이터를 읽는 객체를 포함.
+*** read() : input stream 에서 1 바이트의 데이터를읽는다. 끝에 도달하면 -1을 반환한다.
+*** 오류가 발생하면 IOException의 예외가 발생한다.
+*** 일반적으로 루프 내부에서 사용한다.
+** 데이터를 읽고 쓰는데 변환이 필요하지 않기 때문에 매우 효율적이다.
+** 컴퓨터 내부의 데이터를 나타내는 비트는 스트림으로 복사되거나 스트림에서 복사 된다.
+* Character Stream
+** Reader
+** Writer
+*** Reader, Writer 모두 바이트 대신 문자를 읽고 쓴다.
+*** write(c) 와 read() 메서드 모두 반환 값은 int 타입이지만 문자 지향 클래스 이므로 바이트 대신에 character를 읽고 쓴다.
+
+=== **PrintWriter**
+writer의 서브 클래스로 모든 기본 데이터 타입을 사람이 읽을 수 있는 문자로 출력하는 클래스이다.
+[source]
+----
+PrintWriter printableCharSink = new PrintWriter(charSink);
+----
+* 생성자의 매개변수로 OutputStream, File 을 사용할 수 있다.
+
+=== **Data Stream**
+PrintWriter가 Writer를 래핑하여 사용하듯 DataOutputStream 또한 OutputStream을 래핑해서 사용한다.
+* double 형식의 값을 출력하는 writeDouble(double x).
+* int 형식의 값을 출력하는 writeInt(int x).
+[source]
+----
+DataOutputStream dataSink = new DataOutputStream(byteSink);
+
+Reader charSource = new InputStreamReader(byteSource);
+Writer charSink = new OutputStreamReader(byteSink);
+----
+* InputStream에서 문자 데이터를 읽어야할 때 InputStreamReader
+* OutputStream에 문자 데이터를 써야 할ㄷ 때 OutputStreamReader
+
+=== **Serialized Object I/O**
+Serializing::
+객체를 기본 유형에 속하는 데이터 값으로 인코딩 한 이후 바이트나 문자로 출력할 방법을 찾아야 한다.
+
+* ObjectInputStream, ObjectOutputStream
+* InputStream, OutputStream을 래핑 할 수 있다.
+* readObject() or writeObject(Object obj)
+
+* 객체 스트림은 바이트 스트림이다.
+* 객체는 기계가 읽을 수 있는 이진 형식으로 표시된다.
+* 객체의 단기 저장과 네트워크 연결을 통해 하나의 java 프로그램에서 다른 프로그램으로 객체를 전송할 때에 용이하다.
+
+* Serializer라는 인터페이스를 구현하는 객체에서만 동작한다.
+
+NOTE:
+ObjectOutputStream은 불변 객체와 함께 사용된다. +
+만일 객체가 이후 변경이 필요하다면 Reset() 메서드를 호출하여 변경 이후의 객체를 저장할 수 있다.
+
+== **File**
+* 절대 경로 : 컴퓨터에서 사용할 수 있는 모든 파일 중에서 하나의 파일을 고유하게 식별한다.
+* 상대 경로 : 현재 디렉토리에서 시작하여 파일을 찾는 방법
+
+[source]
+----
+System.getProperty("user.dir") // 현재 디렉토리의 절대 경로 이름을 String으로 반환
+System.getProperty("user.home") // 사용자 홈 디렉토리의 절대 경로 이름을 String으로 반환
+----
+
+java.io.File::
+플랫폼 간의 경로 차이로 인해 발생하는 문제를 해결하기 위한 클래스
+* File 타입의 객체는 파일 자체가 아닌 파일의 이름을 나타낸다.
+
+[source]
+----
+new File(String)
+new File(File, String) //첫번째 파라미터는 디렉토리를 참조하는 File 객체. 두번째 파라미터는 해당 디렉토리에서 파일까지의 경로.
+
+file.exists() // 파일이 존재하는 경우 true를 반환한다.
+file.canRead() // 파일이 존재하고 프로그램이 파일을 읽을 권한이 있다면 true를 반환한다.
+file.canWrite() // 파일이 존재하고 프로그램이 파일에 쓰기 권한이 있다면 true를 반환한다.
+file.isDirectory() // File 객체가 디렉토리를 참조하는 경우 true를 반환한다. 일반 파일이거나 해당 이름의 파일이 존재하지 않으면 false.
+file.delete() //  파일이 존재하면 삭제한다. 삭제 여부를 boolean 값으로 반환한다.
+file.list() // File 객체가 디렉토리를 참조하는 경우에 해당 디렉토리에 존재하는 파일의 이름을 String[] 타입으로 반환한다. 파일이 존재하지 않으면 null값을 반환한다.
+file.listFiles() // String 배열을 반환하는게 아닌 File 배열을 반환한다.
+----
+
+=== **XML**
+
+* XML 문서는 element, attribute, texual content로 구성된다.
+
+요소::
+[source, xml]
+----
+<?xml version="1.0"?>
+<tag>
+    content
+</tag> 
+----
+
+XML의 tag 이름과 attribute 이름은 대소문자를 구분한다.
+
+* 이름은 문자로 시작해야 하며 문자, 숫자, 기타 문자등이 표함 된다.
+* 모든 태그는 빈 태그이거나 종료 태그가 존재해야 한다.
+* document에는 모든 요소들이 포함된 root element가 존재해야 한다.
+* 모든 attribute에는 값이 있어야 하며 해당 값은 ''로 묶어야 한다.
+* 특수 문자 &와 <가 속성 값이나 content에 나타나는 경우 "&lt";, "&amp"; 처럼 작성된다.
+* "&lt";, "&amp";는 entity의 예.
+
+=== **DOM - Document Object Model**
+XML 문서가 나타내는 데이터 구조를 재구성하는 API
+
+* XML 문서를 표현하기 위해 데이터 구조를 구축하는 방법을 지정하고 해당 구조의 데이터에 접근하기 위한 몇 가지 표준 방법을 지정한다.
+
+[source]
+----
+DocumentBuilder docReader = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+
+xmldoc = docReader.parse(selectFile);
+----
+* selectFile -> XML 문서를 나타내는 File 객체
+* xmldoc -> Document 유형
+
+Document 객체는 전체 XML 문서를 나타낸다.
+
+[source]
+----
+xmldoc.getDocumentElement()
+----
+* 문서의 루트 element를 나타내는 Element 타입을 반환한다.
+
+[source]
+----
+element.getTagName() // element의 태그에 사용되는 문자열을 반환한다.
+
+element.getAttribut(attrName) // attrName이 요소의 속성 이름인 경우 해당 속성의 값을 반환한다.
+
+element.getTextContent() // element에 포함된 모든 textual content를 문자열로 반환한다.
+
+element.getChildNodes() // element의 모든 하위 노드를 포함하는 NodeList 타입을 반환한다. 전체 DOM 데이터 구조를 확인할 수 있다.
+
+element.getElementsByTagName(tagName) // element 내부에 중첩되어 있고 지정된 태그 이름을 갖는 모든 요소를 나타내는 NodeList를 반환한다.
+----
+
