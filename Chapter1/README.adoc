@@ -2,8 +2,18 @@
 
 == Overview: The Mental Landscape +
 
-=== 📂 Team Member
-[cols="5*^", %autowidth]
+
+[width=25%]
 |===
-| link:./seungjo[정승조] | link:./jeongwoo[이정우] | link:./yongjun[유용준] |link:./damho[이담호] |link:./jaehun[장재훈]
+| Name
+
+| link:./seungjo[정승조]
+
+| link:./jeongwoo[이정우]
+
+| link:./yongjun[유용준]
+
+| link:./damho[이담호]
+
+| link:./jaehun[장재훈]
 |===
