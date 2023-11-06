@@ -1,0 +1,52 @@
+= Chapter 8 - Correctness, Robustness, Efficiency
+
+== Section 1 Introduction to Correctness and Robustness
+- 프로그램은 설계된 작업을 수행하면 -> 올바름
+- 예상치 못한 상황을 합리적으로 처리 -> 견고
+
+== Writing Correct Programs
+
+=== Precondition Postcondition
+- Variable에 들어가는 (값을 실행 전) 참이라고 입증될 수 있는 사실
+- Program Segment프로그램 세그먼트(코드 블록) 실행 후에 참이라고 입증될 수 있는 사실
+
+=== Invariants - 불변성
+- loop Invariant 루프가 진행되는 동안 항상 참으로 남아있는 조건
+- class Invariant 클래스 내부에서 항상 참이되는 조건
+
+== Exceptions and try..catch
+- 프로그램을 견고하게 만드는 것보다는 작동하게 만드는 것은 다소 쉽다.
+- 예외처리 - 오류보다 더 일반적인 의미로 프로그램이 실행될 때 발생하는 모든 상황이 포함.
+- 프로그램 실행 중 Exception 발생 -> 이를 Catch로 잡고 처리하면 프로그램의 충돌을 피할 수 있음.
+- finally 문 - 예외 상관없이 항상 실행되는 블록
+[source, java]
+----
+try {
+    statement
+} catch(Excetpion-class-name variable-name) {
+    statement
+} finally {
+    statement
+}
+----
+
+=== throw Exception
+- 잘못된 값이 들어오면 고의적으로 throw문을 통해 예외를 던질 수 있다.
+- 예외를 던지면 -> 함수가 예외 객체를 생성 호출 스택에 넣음 -> 예외가 있는 catch 블록 검사 -> finally문이 있다면 실행
+    -> 예외 처리완료후 기 호출 스택 해제 -> 프로그램 다음단계 실행
+
+=== Mandatory Exception Handling
+- Checked Exception - compile에서 검사 - 필수적으로 예외처리를 해야함
+- Uncheked Exception - compile에서 검사하지 않음. - 예외처리를 해도 강제하지 않음
+- 예외처리르 통해 견고한 프로그램을 만들 수 있다.
+
+== Assertions and Annotations
+- 반드시 참이여야 하는 조건을 검사하기 위해 Assertions
+- Annotation - 코드에 작성하는 메모
+
+== Analysis of Algorithms
+- 점근적 분석(Asymptotic Analysis) -> 입력의 크기가 늘어남에 따라 나타나는 경향
+- 빅오(Big O) - 선형 시간복잡도
+- 빅세타(Big Theta) - 평균 실행 시간
+- 빅오메가(Big Omega) - 최선의 시간
+- 다음과 같은 표기법에 따라 알고리즘을 선택하고 조합하여 사용할 수 있다.

@@ -1,0 +1,11 @@
+
+
+##  용어 정리
+ 1. subclass - 하위 클래스
+ 2. inheritance - 상속
+ 3. polymorphism - 다향성
+ 4. class hierarchy - 클래스 계층
+ 5. concreate class - 구체 클래스(추상클래스 반대말)
+ 6. Nested Classes - 중첩 클래스(anonymous class또한 포함)
+ 7. modifier - getter, setter
+ 8. local class - 메서드 정의 내부에 정의된 클래스, 로컬 클래스는 서브루틴 내에서만 사용할 수 있지만 객체는 서브루틴 외부에서도 사용할 수 있다. 로컬 클래스를 정의된 서브루틴 내에서 로컬 변수를 사용할 수 있고 매개변수를 사용할 수 도 있다, 하지만 그러긴 위해선 로컬 변수 또는 매개변수가 final이거나 사살상 final이어야만 사용할 수 있다.

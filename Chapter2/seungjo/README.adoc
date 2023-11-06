@@ -1,0 +1,69 @@
+= Chapter 2. Programming in the Small I: Names and Things
+
+== Section 2.1 The Basic Java Application
+
+[quote]
+Subroutine vs Function vs Method ?
+
+=== Syntax (구문)
+* 무엇이 허용되는지 결정하는 규칙
+
+=== Semantics (의미론)
+* 작성한 코드가 생각한대로 올바르게 작동하는가?
+* 프로그램의 의미가 옳아야 한다는 것이다.
+
+
+=== Program
+* 컴퓨터가 어떤 작업을 수행하기 위해 실행할 수 있는 일련의 명령
+* Programming Language로 작성해야 한다.
+
+
+=== Class
+- 일부 변수와 서브루틴을 그룹화하는 것이 목적
+- 이러한 변수와 서브루틴을 클래스의 __static members__라고 한다.
+
+=== Identifier (식별자)
+- 식별자를 사용하여 클래스, 변수 및 서브루틴의 이름을 지정한다.
+- 예약어(class, public, if, else ...)는 식별자로 사용할 수 없다.
+
+=== Variable
+[source, java]
+variable = expression;
+
+- 변수에 값을 넣는 방법은 할당문(assignment statement)를 사용하는 것이다.
+
+
+=== Data Type
+**_변수가 가질 수 있는 값_**
+
+==== Primitive type
+```
+boolean : true, false
+
+char : 2byte (UNICODE -> 정수)
+byte : 1byte (8bit)
+short : 2byte
+int : 4byte
+long : 8byte
+
+float : 4byte
+double : 8byte
+```
+
+=== Literal
+- 프로그램에서 상수 값은 리터럴(literal)로 표현한다.
+[source, java]
+ch = 'A';
+flaot f = 3.14f;
+double d = 1.125d;
+long l = 100L;
+int i = 1_000_000;
+
+=== Function
+- returns a value
+- return값이 있는 함수를 호출 한 경우 할당문을 사용하자
+
+
+=== Object
+- 변수 + 서브루틴의 모음
+
