@@ -1,0 +1,259 @@
+Question 1:
+
+What is an algorithm?
+```
+알고리즘이란, 한정된 수의 단계 후에 항상 종료되는 모호하지 않은 단계별 절차 (step-by step procedure)
+```
+
+
+Question 2:
+
+Explain briefly what is meant by "pseudocode" and how is it useful in the development of algorithms.
+
+```
+의사코드(pseudo code)란 알고리즘을 자연어로 프로그래밍 언어와 유사한 배치로 만들어놓은 코드
+```
+
+Question 3:
+
+What is a block statement? How are block statements used in Java programs?
+
+```
+{...} 와 같이 한 구문을 나눌 때 사용한다.
+```
+
+Question 4:
+
+What is the main difference between a while loop and a do..while loop?
+```
+두 방식의 반복문 모두 boolean-expression이 false일 때 까지 반복하는 공통점이 있다.
+하지만 종료 조건을 언제 비교하는지 시점 위치가 다르다.
+
+while(boolean-expression) {...}
+
+do {...} while(boolean-expression)
+```
+
+Question 5:
+
+What does it mean to prime a loop?
+```
+'loop를 예열한다(prime a loop)'는 while(boolean-expression)과 같이
+boolean-expression에 들어가는 값을 미리 선정하는 것을 말한다. ?
+```
+
+Question 7:
+
+Write a for loop that will print out all the multiples of 3 from 3 to 36, that is: 3 6 9 12 15 18 21 24 27 30 33 36.
+
+[source, java]
+----
+for (int i = 3; i <= 36; i += 3) {
+    System.out.println( i );
+}
+----
+
+Question 8:
+
+Fill in the following main() routine so that it will ask the user to enter an integer, read the user's response, and tell the user whether the number entered is even or odd. (You can use TextIO.getInt() to read the integer. Recall that an integer n is even if n % 2 == 0.)
+
+public static void main(String[] args) {
+
+         // Fill in the body of this subroutine!
+
+}
+[source, java]
+----
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args){
+      Scanner sc = new Scanner(System.in);
+      System.out.print("Enter the number: ");
+      int n = sc.nextInt();
+
+      if (n % 2 == 0) {
+          System.out.println("This is odd number.");
+      }
+      else {
+          System.out.println("This is even number.");
+      }
+    }
+}
+----
+Question 9:
+
+Write a code segment that will print out two different random integers selected from the range 1 to 10. All possible outputs should have the same probability. Hint: You can easily select two random numbers, but you have to account for the fact that the two numbers that you pick might be the same.
+[source, java]
+----
+public class Main {
+    public static void main(String[] args){
+        int x = 0;
+        int y = 0;
+
+        while (x == y) {
+            x = (int)(Math.random() * 10 + 1);
+            y = (int)(Math.random() * 10 + 1);
+        }
+
+        System.out.println(x + " " + y);
+    }
+}
+----
+
+Question 10:
+
+Suppose that s1 and s2 are variables of type String, whose values are expected to be string representations of values of type int. Write a code segment that will compute and print the integer sum of those values, or will print an error message if the values cannot successfully be converted into integers. (Use a try..catch statement.)
+
+[source,java]
+----
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+
+        String s1 = sc.nextLine();
+        String s2 = sc.nextLine();
+        int sum = 0;
+
+        try {
+            int n1 = Integer.parseInt(s1);
+            int n2 = Integer.parseInt(s2);
+            sum = n1 + n2;
+            System.out.println(sum);
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+}
+----
+
+Question 11:
+
+Show the exact output that would be produced by the following main() routine:
+[source, java]
+----
+public static void main(String[] args) {
+    int N;
+    N = 1;
+    while (N <= 32) {
+       N = 2 * N;
+       System.out.println(N);
+    }
+}
+----
+
+```
+// Answer
+2
+4
+8
+16
+32
+64
+```
+
+Question 12:
+
+Show the exact output produced by the following main() routine:
+
+[source, java]
+----
+public static void main(String[] args) {
+   int x,y;
+   x = 5;
+   y = 1;
+   while (x > 0) {
+      x = x - 1;
+      y = y * x;
+      System.out.println(y);
+   }
+}
+
+----
+
+```
+// Answer
+4
+12
+24
+24
+0
+```
+
+Question 13:
+
+What output is produced by the following program segment? Why? (Recall that name.charAt(i) is the i-th character in the string, name.)
+
+[source, java]
+----
+String name;
+int i;
+boolean startWord;
+
+name = "Richard M. Nixon";
+startWord = true;
+for (i = 0; i < name.length(); i++) {
+    if (startWord)
+        System.out.println(name.charAt(i));
+    if (name.charAt(i) == ' ')
+        startWord = true;
+    else
+        startWord = false;
+}
+----
+
+```
+// Answer
+R
+M
+N
+```
+
+Question 14:
+
+Suppose that numbers is an array of type int[]. Write a code segment that will count and output the number of times that the number 42 occurs in the array.
+
+[source, java]
+----
+public class Main {
+    public static void main(String[] args){
+        int[] numbers = new int[10]; // 42가 있다고 가정
+        int count = 0;
+
+        for(int i = 0; i < numbers.length; i++) {
+            if (numbers[i] == 42) {
+                count++;
+            }
+        }
+
+        System.out.println("There were " + count + " 42s in the array.");
+    }
+}
+----
+
+Question 15:
+
+Define the range of an array of numbers to be the maximum value in the array minus the minimum value. Suppose that raceTimes is an array of type double[]. Write a code segment that will find and print the range of raceTimes.
+
+[source, java]
+----
+
+public class Main {
+    public static void main(String[] args){
+        double[] raceTimes = new double[10]; // double 값들이 있다고 가정
+        double maxVal = Integer.MIN_VALUE;
+        double minVal = Integer.MAX_VALUE;
+
+        for(int i = 0; i < raceTimes.length; i++) {
+            maxVal = Math.max(maxVal, raceTimes[i]);
+            minVal = Math.min(minVal, raceTimes[i]);
+        }
+
+        double range = maxVal - minVal;
+
+        System.out.println("The range is " + range);
+    }
+}
+----

@@ -1,0 +1,251 @@
+= Chapter 1
+
+== The Fetch and Execute Cycle: Machine Language
+
+=== CPU - Central Processing Unit
+
+* 계산을 수행하는 단일 구성 요소
+* ALU - Arithmetic Logic Unit → operation 수행
+* Register → 숫자를 저장할 수 있는 작은 memory (16개 or 32개)
+* PC - Program Counter → 다음에 실행 될 명령어의 address를 저장.
+
+=== Program
+
+* 컴퓨터가 기계적으로 수행 할 명확한 명령어 목록.
+* 컴퓨터는 ‘Machine language’(기계어)라고 불리우는 단순한 유형으로 작성된 명령어들을 실행
+* 각각의 컴퓨터는 고유한 Machine language를 가지고 있으며 해당 언어로 작성된 프로그램들만 실행이 가능.
+
+=== Memory
+
+* CPU가 프로그램을 실행할 때 컴퓨터의 main memory(RAM)에 프로그램을 저장.
+* 메모리에는 프로그램을 포함해서 해당 프로그램에서 사용하거나 처리하는 data를 저장.
+* main memory는 연속된 location으로 구성.
+
+=== Address
+
+* main memory의 location은 번호를 가지고 있는데 연속된 location의 번호를 address라고 함.
+* memory에 저장된 수백만개의 정보 사이에서 특정한 정보를 찾아내는 방법을 제공.
+** 1. CPU가 프로그램의 명령이나 특정 location의 data에 접근이 필요할 때, 메모리에 정보의 주소를 신호로 보냄
+** 2. 메모리는 지정된 location에 포함된 value를 보냄.
+* 명령어의 memory address는 byte중 첫 번째 주소.
+
+=== fetch and execute cycle
+
+* machine language 단계에서 Cpu의 작동
+** memory에 저장된 연속된 machine language 명령어를 실행
+** 반복적으로 읽거나 명령어를 fetch한 이후 명령어를 실행
+
+=== Bit
+
+* 기계어 명령어는 binary number로 표현됨 → 0, 1
+
+명령어나 data의 일부는 byte로 구성되고 연속된 memory location에 저장됨.
+
+image:image/schematicview.png[]
+
+== Asynchronous Events: Polling Loops and Interrupts
+
+=== Computer system
+
+* hard disk, ssd - solid state drive → program과 data file을 저장
+** 대량의 정보를 저장하지만 program이 실제로 실행이 되기전에 main memory로 load됨.
+* keyboard, mouse, monitor, printer, audio output device ..etc
+* 다양한 장치들을 사용하기 위해서는 CPU가 실행할 수 있는 소프트웨어로 구성된 device driver를 사용.
+
+=== polling
+
+CPU가 들어오는 data를 계속해서 확인하고 처리하는 것. 비효율적인 방식
+
+input을 기다리는 시간으로 엄청난 시간을 낭비할 수 있음.
+
+=== interrupt
+
+다른 장치에서 cpu로 신호를 보냄
+
+interrupt signal을 처리하기 위해서 하던일을 중지하고 해당 interrup를 처리 -> 이후 다시 원래 작업으로 돌아감
+
+interrupt를 처리하기 위한 명령어 -> interrupt handler -> 이전에 수행하던 작업으로 jump하는 명령어가 존재
+
+* interrupt는 CPU가 예측하지 못한 시간에 asymchronous event를 처리할 수 있게 함.
+
+=== Thread
+
+CPU가 수행하는 개별적인 작업 - 한 CPU는 여러개의 스레드를 동시에 처리할 수 있음
+
+1. thread는 자발적으로 다른 thread에 제어권을 양보할 수 있다.
+2. 어떤 비동기적인 이벤트가 발생할 때까지 기다려야 할수 있다. → 해당 상태를 blocked 상태라고 함.
+3. 할당된 시간을 모두 소모한다면 다른 thread를 실행하도록 중단될 수 있다. → preemptive multitasking
+** 일정한 시간마다 interrupt를 생성하는 특정한 timer device가 필요함.
+
+=== Operating system
+
+interrupt 처리, device와 user사이의 communication 처리, 실행이 허용된 thread를 관리하는 소프트웨어
+
+== The Java Virtual Machine
+
+=== Compiler
+
+high level language로 작성된 프로그램을 컴퓨터가 실행이 가능한 machine language로 번역해주는 프로그램
+
+=== Interpreter
+
+한꺼번에 번역 하지 않고 필요한 부분만 번역
+
+한 type의 컴퓨터의 기계어 프로그램을 다른 type의 컴퓨터에서 실행할 수 있게 함.
+
+* complie을 진행 했을 때 나오는 java bytecode는 JVM이 프로그램을 실행할 수 있도록 해석된 language
+* JVM은 java bytecode를 해당 type의 컴퓨터에 맞는 machine language로 번역
+
+image:image/javacompiler.png[]
+
+=== JIT - Just In Time Complier
+
+* java bytecode를 기계어로 변환 → 프로그램이 실행되는 동안 필요한 부분 변환
+* 여러번 실행되는 부분은 native code를 cache해서 메모리에 저장해 두기 때문에 실행 속도가 향상됨.
+
+== Fundamental Building Blocks of Programs
+
+=== data
+
+* variable - 프로그램에서 쉽게 사용할 수 있게 이름을 가진 memory location
+* type -  variable이 저장할 수 있는 data의 종류.
+
+=== instruction
+
+* Control structure - control의 흐름을 변경할 수 있는 특별한 명령어
+** 1. loop → 일부의 연속된 명령어들을 반복 → for, while
+** 2. branche → 프로그램을 실행하면서 발생할 수 있는 조건을 테스트해서 둘 이상의 과정을 컴퓨터가 결정 → if
+* Subroutine - 일부 작업을 수행하는 명령으로 구성, 이름을 가지고 하나의 unit으로 그룹화 됨.
+
+== Objects and Object-oriented Programming
+
+=== Top down programming
+
+* 큰 문제를 해결 하기 위해서 여러개의 작은 작업으로 나눠서 해결
+* 프로그램의 데이터구조는 subroutine, control structure만큼 중요
+* 단점
+** 1. top down programming에서는 프로그램이 다루는 데이터를 고려하지 않음
+** 2. 또한 다른 프로젝트에서 수행되는 작업을 재사용 하기 어려움
+* 해결점
+** bottom-up design과 결합해서 사용.
+
+=== bottom-up design
+
+* 이미 해결 방법을 알고 있는 문제를 가지고 아래에서부터 접근 하는 방식
+
+=== Module
+
+* 단순하고 잘 정의된  직접적인 방법으로 시스템 나머지와 상호작용하는 시스템의 구성요소
+
+=== information hiding
+
+* Module 내부에서의 동작은 Module이 정상적으로 동작하는 이상 시스템에서 중요하지 않다.
+* software engineering에서 중요한 원칙
+* module에서 제공하는 subroutine을 호출해서만 data에 접근할 수 있도록 함
+
+=== OOP -  object oriented programming
+
+* information higing을 제공하는 접근 방식
+
+=== Object
+
+* data와 subroutine을 포함하는 module
+* 내부의 상태(data)를 가지고 메세지(subroutine)에 응답할 수 있는 entity
+
+* 대규모의 프로그램을 설계할 때 top-down 방식은 많지 않음
+
+=== polymorphism
+
+* object에 따라서 동일한 message에 다른 방법으로 응답 할 수 있는 성질
+
+=== class
+
+* 같은 type의 data를 포함하고 같은 message에 같은 방법으로 응답하는 object는 같은 class (물론 class가 다르더라도 유사할수 있다)
+* class는 재사용이 가능한 구성요소이므로, 프로그램에 따라서 직접 재사용 하거나 또는 subclass에서 새롭게 정의해서 사용할 수 있다.
+
+=== subclass
+
+* 클래스의 하위 클래스는 해당 클래스를 inherit(상속)
+
+=== interitance
+
+* 프로그램을 구성하는 강력한 수단
+* software의 구성요소를 재사용에도 관련이 있음.
+
+== The Internet and Beyond
+
+* 컴퓨터는 네트워크를 통해 연결 될 수 있음
+
+=== protocol
+
+* 통신이 진행되는 방법에 대한 자세한 내용
+* IP - Internet Protocol
+** 다른 컴퓨터로 data를 물리적으로 전송하기 위한 protocol
+* TCP - Transmission Control Protocol
+** IP를 사용해서 전송된 data가 error없이 전송되도록 보장해주는 protocol
+
+=== packet
+
+* 다른 컴퓨터로 전송되는 data와 data가 인터넷에서 가야할 주소 정보를 가지고 있다.
+
+=== IP address
+
+* 인터넷에서 모든 컴퓨터들을 식별하는 고유한 숫자
+* packet의 addressing에도 사용됨
+
+=== domain name
+
+* 컴퓨터를 식별할 수 있는 이름
+
+=== WWW - World Wide Web
+
+* 인터넷상의 컴퓨터에 저장되어 있는 정보의 page를 요구할 수 있음
+* 해당 page에는 다른 page로 이동 할 수 있는 link가 포함 됨
+* page를 저장하는 컴퓨터 -  web-server
+* web browser는 http라는 protocol을 사용해서 page에 대한 요청을 보내고 web server를 통해서 응답을 받음
+
+== Quiz
+
+=== 01.One of the components of a computer is its CPU. What is a CPU and what role does it play in a computer?
+
+CPU는 연산을 하는 컴퓨터의 구성요소. +
+machine language로 구현된 프로그램을 실행한다.
+
+=== 02. Explain what is meant by an "asynchronous event." Give some examples.
+
+예측하지 못하는 시간에 들어오는 event. +
+마우스나 키보드 같이 사용자의 입력을 기다리는 event
+
+=== 03. What is the difference between a "compiler" and an "interpreter"?
+
+compiler는 전체의 프로그램을 기계어로 변환하고 interpreter는 명령 단위로 변환.
+
+=== 04. Explain the difference between high-level languages and machine language.
+
+high-level language는 사용자가 이해하기 쉽게 작성하는 language이고 machine language는 컴퓨터가 프로그램을 실행할 수 있는 language.
+
+=== 05. If you have the source code for a Java program, and you want to run that program, you will need both a compiler and an interpreter. What does the Java compiler do, and what does the Java interpreter do?
+
+java compiler는 JVM이 실행할 수 있는 java bytecode로 변환하고 +
+java interpreter는 각 유형의 컴퓨터가 실행할 수 있는 machine language로 변환해서 실행.
+
+=== 06. What is a subroutine?
+
+특정한 일을 수행하는 명령들을 그룹화 한것.
+
+=== 07. Java is an object-oriented programming language. What is an object?
+
+data와 data를 조작할 수 있는 subroutine으로 구성 된 module
+
+=== 08. What is a variable? (There are four different ideas associated with variables in Java. Try to mention all four aspects in your answer. Hint: One of the aspects is the variable's name.)
+
+프로그램이 쉽게 사용할 수 있도록 이름을 붙인 메모리의 location으로 어떤 type의 value를 가지고 있다.
+
+=== 09. Java is a "platform-independent language." What does this mean?
+
+어떤 type의 컴퓨터든 상관없이 JVM이 설치가 된 컴퓨터라면 java 프로그램을 실행할 수 있다.
+
+=== 10. What is the "Internet"? Give some examples of how it is used. (What kind of services does it provide?)
+
+모든 컴퓨터들이 연결되어 통신할 수 있는 거대한 네트워크.
+다른 사용자에게 이메일을 전송하거나 http protocol을 사용해서 특정 web page에 접근할 수 있다.
